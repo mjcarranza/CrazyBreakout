@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>664</width>
+    <width>838</width>
     <height>436</height>
    </rect>
   </property>
@@ -35,7 +35,7 @@
      </spacer>
     </item>
     <item>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="logoLabel">
       <property name="text">
        <string/>
       </property>
@@ -76,7 +76,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="playBtn">
         <property name="font">
          <font>
           <family>URW Bookman</family>
@@ -127,14 +127,14 @@ font: 63 italic 11pt &quot;URW Bookman&quot;;</string>
     <item>
      <layout class="QGridLayout" name="gridLayout">
       <item row="1" column="3">
-       <widget class="QLineEdit" name="lineEdit_2">
+       <widget class="QLineEdit" name="portLineEdit">
         <property name="styleSheet">
          <string notr="true">background-color: rgb(238, 238, 236);</string>
         </property>
        </widget>
       </item>
       <item row="0" column="3">
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="portLabel">
         <property name="font">
          <font>
           <family>URW Bookman</family>
@@ -149,7 +149,7 @@ font: 63 italic 11pt &quot;URW Bookman&quot;;</string>
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="IPLabel">
         <property name="font">
          <font>
           <family>URW Bookman</family>
@@ -203,7 +203,7 @@ font: 63 italic 11pt &quot;URW Bookman&quot;;</string>
        </spacer>
       </item>
       <item row="1" column="1">
-       <widget class="QLineEdit" name="lineEdit">
+       <widget class="QLineEdit" name="ipLineEdit">
         <property name="styleSheet">
          <string notr="true">background-color: rgb(238, 238, 236);</string>
         </property>
