@@ -1,5 +1,6 @@
 #include "gamewindow.h"
 #include "ui_gamewindow.h"
+#include "Client.h"
 
 gamewindow::gamewindow(QWidget *parent) :
     QWidget(parent),
