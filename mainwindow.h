@@ -15,11 +15,10 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    QString getIP();
-    QString getPORT();
     void connecting();
     QString IP;
     QString Port;
+    QString nick;
 
 public slots:
     void on_playBtn_clicked();

@@ -11,19 +11,25 @@
 #include <vector>
 #include <unistd.h>
 #include <arpa/inet.h>
+#include <QString>
 using namespace std;
 
 class Client{
-public:
-    Client();
-    void Connect(const char* ip, int port); // run server
-    void setMessage(const char* msj);
-
 private:
     int descriptor; // identifies by a number the connected devices
     sockaddr_in info; // socket server information
 
     static void *Manager(void* obj);
+
+public:
+    Client();
+    void Connect(); // run server
+    void setMessage(const char* msj);
+
+    // setters
+    void setPort(int prt);
+    void setIp(string ip);
+    void setNickname(string nick);
 
 };
 

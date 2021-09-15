@@ -18,23 +18,9 @@ MainWindow::~MainWindow()
 }
 
 void *clientRun(void *){
-    MainWindow w;
-
-    QString servIp;
-    QString servPort;
-
-    // crear una instancia de esta clase
-
-    servIp = w.getIP(); // se obtiene el ip ingresado por el usuario // en formato QString
-    string str1 = servIp.toStdString();
-    const char* ip= "192.168.1.108";
-
-    //servPort = w.getPORT(); // se obtiene el puerto ingresado por el usuario // en formato QString
-    //string str2 = servPort.toStdString();
-    int prt= 4050;
 
     try {
-        client->Connect(ip,prt);
+        client->Connect();
     } catch (string ex) {
         cout<< ex <<endl;
     }
@@ -49,10 +35,10 @@ void MainWindow::connecting(){
     pthread_t hiloClient;
     pthread_create(&hiloClient,0,clientRun,nullptr);
     pthread_detach(hiloClient);
-    //7game->show(); // show game`s window
+    game->show(); // show game`s window
 
     cout<<"va a entrar al while"<<endl;
-    while (true){
+    while (true){ // /////////////////////////////// arreglar este bucle para que se ejecute constantemente
         string json="hola desde el cliente 2!";
         //cout<<"el mensaje a enviar es: "<<endl;
         //cin>>json;
@@ -76,8 +62,14 @@ void MainWindow::on_playBtn_clicked()
 
     IP = ui->ipLineEdit->text(); // gets the text in the ipLineEdit Qstring format
     Port = ui->portLineEdit->text(); // gets the text in the portLineEdit QString format
+    nick = ui->nickLineEdit->text(); // gets the text in the portLineEdit QString format
+
     string textIP = IP.toUtf8().constData(); // convert ip to string
     string textPort = Port.toUtf8().constData(); // convert port to string
+    string textNick = nick.toUtf8().constData(); // convert nick to string
+
+    int prt = stoi(textPort);
+
     // creating a QMessageBox for warning
     msg = new QMessageBox();
     msg->setWindowTitle("WARNING");
@@ -95,17 +87,14 @@ void MainWindow::on_playBtn_clicked()
     else{
         cout<<"IP address: "<<textIP<<endl; // print ip address
         cout<<"Server`s port: "<<textPort<<endl; // print port
-        //close(); // close main window
+        client->setIp(textIP); // set ip in client class
+        client->setPort(prt); // set port in client class
+        client->setNickname(textNick);
+
+        close(); // close main window
 
         this->connecting(); // connecting to server.
     }
 
 }
 
-QString MainWindow::getIP(){
-    return IP;
-}
-
-QString MainWindow::getPORT(){
-    return Port;
-}
