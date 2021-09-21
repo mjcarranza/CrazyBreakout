@@ -21,39 +21,43 @@ class Ui_gamewindow
 {
 public:
     QFrame *background;
-    QLabel *paddle;
-    QLabel *ball;
     QLabel *label;
     QLabel *score;
+    QLabel *label_2;
+    QLabel *label_3;
 
     void setupUi(QWidget *gamewindow)
     {
         if (gamewindow->objectName().isEmpty())
             gamewindow->setObjectName(QString::fromUtf8("gamewindow"));
-        gamewindow->resize(639, 450);
+        gamewindow->resize(868, 538);
         gamewindow->setStyleSheet(QString::fromUtf8(""));
         background = new QFrame(gamewindow);
         background->setObjectName(QString::fromUtf8("background"));
-        background->setGeometry(QRect(0, 0, 641, 451));
+        background->setGeometry(QRect(0, 0, 871, 541));
         background->setStyleSheet(QString::fromUtf8("background-image: url(:/images/fondo-pared-ladrillo-azul_53876-94010.jpg);"));
         background->setFrameShape(QFrame::StyledPanel);
         background->setFrameShadow(QFrame::Raised);
-        paddle = new QLabel(background);
-        paddle->setObjectName(QString::fromUtf8("paddle"));
-        paddle->setGeometry(QRect(300, 410, 61, 16));
-        paddle->setPixmap(QPixmap(QString::fromUtf8(":/images/paddle.png")));
-        paddle->setScaledContents(true);
-        ball = new QLabel(background);
-        ball->setObjectName(QString::fromUtf8("ball"));
-        ball->setGeometry(QRect(320, 380, 16, 16));
-        ball->setPixmap(QPixmap(QString::fromUtf8(":/images/ball.png")));
-        ball->setScaledContents(true);
         label = new QLabel(background);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(400, 10, 91, 31));
+        label->setGeometry(QRect(650, 10, 91, 31));
+        QFont font;
+        font.setFamilies({QString::fromUtf8("Tlwg Typo")});
+        font.setBold(true);
+        font.setItalic(true);
+        label->setFont(font);
         score = new QLabel(background);
         score->setObjectName(QString::fromUtf8("score"));
-        score->setGeometry(QRect(500, 10, 111, 31));
+        score->setGeometry(QRect(740, 10, 111, 31));
+        score->setFont(font);
+        label_2 = new QLabel(background);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setGeometry(QRect(10, 10, 101, 31));
+        label_2->setFont(font);
+        label_3 = new QLabel(background);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setGeometry(QRect(130, 10, 191, 31));
+        label_3->setFont(font);
 
         retranslateUi(gamewindow);
 
@@ -63,10 +67,10 @@ public:
     void retranslateUi(QWidget *gamewindow)
     {
         gamewindow->setWindowTitle(QCoreApplication::translate("gamewindow", "Form", nullptr));
-        paddle->setText(QString());
-        ball->setText(QString());
         label->setText(QCoreApplication::translate("gamewindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; color:#8ae234;\">SCORE:</span></p></body></html>", nullptr));
         score->setText(QCoreApplication::translate("gamewindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; color:#8ae234;\">0000000</span></p></body></html>", nullptr));
+        label_2->setText(QCoreApplication::translate("gamewindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; color:#8ae234;\">PLAYER:</span></p></body></html>", nullptr));
+        label_3->setText(QCoreApplication::translate("gamewindow", "<html><head/><body><p align=\"justify\"><span style=\" font-size:18pt; color:#8ae234;\">PLAYER</span></p></body></html>", nullptr));
     } // retranslateUi
 
 };

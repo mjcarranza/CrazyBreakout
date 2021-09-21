@@ -1,13 +1,9 @@
 #include "Client.h"
 
-int puerto;
 string nickname;
-const char* servip;
 
 Client::Client(){}
 void Client::Connect() {
-    cout<<"valor de puerto en connect> "<<puerto<<endl;
-    cout<<"valor de ip en connect> "<<servip<<endl;
     cout<<"valor de nick en connect> "<<nickname<<endl;
 
     // create a descriptor
@@ -16,8 +12,8 @@ void Client::Connect() {
         cout<<"Error while creating the socket"<<endl;
     }
     info.sin_family = AF_INET; // Connection type ipv4
-    info.sin_addr.s_addr = inet_addr(servip); // Accept any
-    info.sin_port = ntohs(puerto); // Define port
+    info.sin_addr.s_addr = inet_addr("192.168.1.108"); // Accept any
+    info.sin_port = ntohs(4050); // Define port
     memset(&info.sin_zero, 0, sizeof(info.sin_zero)); // Clean structure
 
     if ((connect(descriptor,(sockaddr *)&info, (socklen_t) sizeof(info)))<0){
@@ -62,22 +58,7 @@ void *Client::Manager(void *obj) {
 void Client::setMessage(const char *msj) {
     send(descriptor,msj, strlen(msj),0);
 }
-/**
- * @brief Client::setPort
- * @param prt
- */
-void Client::setPort(int prt)
-{
-    puerto = prt; // save port in a global variable
-}
-/**
- * @brief Client::setIp
- * @param ip
- */
-void Client::setIp(string ip)
-{
-    servip = ip.c_str(); // save the ip in a global variable
-}
+
 /**
  * @brief Client::setNickname
  * @param nick

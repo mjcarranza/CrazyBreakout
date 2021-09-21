@@ -1,5 +1,5 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'gamewindow.h'
+** Meta object code from reading C++ file 'ball.h'
 **
 ** Created by: The Qt Meta Object Compiler version 68 (Qt 6.1.2)
 **
@@ -7,12 +7,11 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../CrazyBreakout/gamewindow.h"
-#include <QtGui/qtextcursor.h>
+#include "../CrazyBreakout/ball.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'gamewindow.h' doesn't include <QObject>."
+#error "The header file 'ball.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 68
 #error "This file was generated using the moc from 6.1.2. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -22,22 +21,22 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_gamewindow_t {
+struct qt_meta_stringdata_ball_t {
     const uint offsetsAndSize[2];
-    char stringdata0[11];
+    char stringdata0[5];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(offsetof(qt_meta_stringdata_gamewindow_t, stringdata0) + ofs), len 
-static const qt_meta_stringdata_gamewindow_t qt_meta_stringdata_gamewindow = {
+    uint(offsetof(qt_meta_stringdata_ball_t, stringdata0) + ofs), len 
+static const qt_meta_stringdata_ball_t qt_meta_stringdata_ball = {
     {
-QT_MOC_LITERAL(0, 10) // "gamewindow"
+QT_MOC_LITERAL(0, 4) // "ball"
 
     },
-    "gamewindow"
+    "ball"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_gamewindow[] = {
+static const uint qt_meta_data_ball[] = {
 
  // content:
        9,       // revision
@@ -53,7 +52,7 @@ static const uint qt_meta_data_gamewindow[] = {
        0        // eod
 };
 
-void gamewindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void ball::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     (void)_o;
     (void)_id;
@@ -61,10 +60,10 @@ void gamewindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     (void)_a;
 }
 
-const QMetaObject gamewindow::staticMetaObject = { {
+const QMetaObject ball::staticMetaObject = { {
     QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
-    qt_meta_stringdata_gamewindow.offsetsAndSize,
-    qt_meta_data_gamewindow,
+    qt_meta_stringdata_ball.offsetsAndSize,
+    qt_meta_data_ball,
     qt_static_metacall,
     nullptr,
     nullptr,
@@ -72,20 +71,20 @@ const QMetaObject gamewindow::staticMetaObject = { {
 } };
 
 
-const QMetaObject *gamewindow::metaObject() const
+const QMetaObject *ball::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *gamewindow::qt_metacast(const char *_clname)
+void *ball::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_gamewindow.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_ball.stringdata0))
         return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 
-int gamewindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int ball::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
     return _id;

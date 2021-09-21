@@ -27,8 +27,6 @@ public:
     void setMessage(const char* msj);
 
     // setters
-    void setPort(int prt);
-    void setIp(string ip);
     void setNickname(string nick);
 
 };

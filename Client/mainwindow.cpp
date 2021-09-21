@@ -5,6 +5,7 @@
 #include "QMessageBox"
 Client* client;
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -37,38 +38,28 @@ void MainWindow::connecting(){
     pthread_detach(hiloClient);
     game->show(); // show game`s window
 
-    cout<<"va a entrar al while"<<endl;
+    string json="hola desde el cliente 2!";
+
     while (true){ // /////////////////////////////// arreglar este bucle para que se ejecute constantemente
-        string json="hola desde el cliente 2!";
-        //cout<<"el mensaje a enviar es: "<<endl;
+
         //cin>>json;
-        //cout<<"se leyo el mensaje: "<<json<<endl;
         if (json == "salir"){
             break;
         }
-        cout<<"el mensaje a enviar es: "<<json<<endl;
         client->setMessage(json.c_str());
         break;
     }
-    cout<<"se salio del bucle"<<endl;
     delete client;
     //luego de conectarse al server que se abra la ventana del juego
 }
 
 void MainWindow::on_playBtn_clicked()
 {
-
     QMessageBox* msg;
 
-    IP = ui->ipLineEdit->text(); // gets the text in the ipLineEdit Qstring format
-    Port = ui->portLineEdit->text(); // gets the text in the portLineEdit QString format
-    nick = ui->nickLineEdit->text(); // gets the text in the portLineEdit QString format
-
-    string textIP = IP.toUtf8().constData(); // convert ip to string
-    string textPort = Port.toUtf8().constData(); // convert port to string
+    nick = ui->nicknameLineEdit->text(); // gets the text in the portLineEdit QString format
     string textNick = nick.toUtf8().constData(); // convert nick to string
 
-    int prt = stoi(textPort);
 
     // creating a QMessageBox for warning
     msg = new QMessageBox();
@@ -76,24 +67,18 @@ void MainWindow::on_playBtn_clicked()
     msg->setIcon(QMessageBox::Warning);
     msg->setStyleSheet("background-color: rgb(0, 0, 0); color: red");
 
-    if(textIP==""){ // if ip is not valid
-        msg->setText("IP Address Required!");
-        msg->show();
-    }
-    else if(textPort==""){ // if port is not valid
-        msg->setText("Server`s Port Required!");
+    if(textNick==""){ // if ip is not valid
+        msg->setText("Nickname Required!");
         msg->show();
     }
     else{
-        cout<<"IP address: "<<textIP<<endl; // print ip address
-        cout<<"Server`s port: "<<textPort<<endl; // print port
-        client->setIp(textIP); // set ip in client class
-        client->setPort(prt); // set port in client class
+        gamewindow *game = new gamewindow();
         client->setNickname(textNick);
-
+        game->show(); // show game`s window
         close(); // close main window
+        // llamar var bool que diga is playingt
 
-        this->connecting(); // connecting to server.
+        //this->connecting(); // connecting to server.
     }
 
 }

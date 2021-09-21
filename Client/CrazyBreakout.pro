@@ -10,14 +10,20 @@ CONFIG += c++11
 
 SOURCES += \
     Client.cpp \
+    ball.cpp \
+    blocks.cpp \
     gamewindow.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    paddle.cpp
 
 HEADERS += \
     Client.h \
+    ball.h \
+    blocks.h \
     gamewindow.h \
-    mainwindow.h
+    mainwindow.h \
+    paddle.h
 
 FORMS += \
     gamewindow.ui \
