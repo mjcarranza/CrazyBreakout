@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c5ccea41-75de-47b6-9615-25e7c6fdf6b5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/.idea/BreakoutServer.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/Server.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/Server.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/BreakoutServer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/BreakoutServer.cbp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeCache.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/3.19.2/CMakeCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/3.19.2/CMakeCXXCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/3.19.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/3.19.2/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/3.19.2/CMakeSystem.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/3.19.2/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/3.19.2/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/BreakoutServer.dir/CXX.includecache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/BreakoutServer.dir/DependInfo.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/BreakoutServer.dir/build.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/BreakoutServer.dir/cmake_clean.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/BreakoutServer.dir/depend.internal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/BreakoutServer.dir/depend.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/BreakoutServer.dir/flags.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/BreakoutServer.dir/link.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/BreakoutServer.dir/progress.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/cmake.check_cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/cmake-build-debug/cmake_install.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BreakoutServer/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/Clase.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/Client.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/Client.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/CrazyBreakout.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/CrazyBreakout.pro.user" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/Resources.qrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/ball.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/ball.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/blocks.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/blocks.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/client.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/client.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/gamewindow.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/gamewindow.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/gamewindow.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/mainwindow.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/mainwindow.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/mainwindow.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/paddle.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/paddle.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/secondwindow.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-CrazyBreakout-Desktop-Debug/.qmake.stash" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-CrazyBreakout-Desktop-Debug/CrazyBreakout" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-CrazyBreakout-Desktop-Debug/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-CrazyBreakout-Desktop-Debug/moc_ball.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-CrazyBreakout-Desktop-Debug/moc_blocks.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-CrazyBreakout-Desktop-Debug/moc_gamewindow.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-CrazyBreakout-Desktop-Debug/moc_mainwindow.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-CrazyBreakout-Desktop-Debug/moc_paddle.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-CrazyBreakout-Desktop-Debug/moc_predefs.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-CrazyBreakout-Desktop-Debug/qrc_Resources.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-CrazyBreakout-Desktop-Debug/ui_gamewindow.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-CrazyBreakout-Desktop-Debug/ui_mainwindow.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build-CrazyBreakout-Desktop-Debug/ui_secondwindow.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/56571201-vector-de-ladrillo-de-fondo-azul-oscuro-diseño-de-ilustración-vectorial.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/GameLogo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/ball.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/common.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/deep.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/double.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/fondo-pared-ladrillo-azul_53876-94010.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/internos.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/paddle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/triple.png" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1yVZ7yk3B70QJ0lAjDFonawhMIt" />
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="cmake.loaded.for.project" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c5ccea41-75de-47b6-9615-25e7c6fdf6b5" name="Changes" comment="" />
+      <created>1632338552670</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1632338552670</updated>
+      <workItem from="1632338554715" duration="437000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
