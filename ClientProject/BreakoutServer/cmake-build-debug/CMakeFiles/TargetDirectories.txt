@@ -1,3 +1,0 @@
-/home/abner/Server-Client/CrazyBreakout/BreakoutServer/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/abner/Server-Client/CrazyBreakout/BreakoutServer/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/abner/Server-Client/CrazyBreakout/BreakoutServer/cmake-build-debug/CMakeFiles/BreakoutServer.dir

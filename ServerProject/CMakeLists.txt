@@ -4,4 +4,4 @@ project(ServerProject)
 set(CMAKE_CXX_STANDARD 14)
 SET(CMAKE_CXX_FLAGS -pthread)
 
-add_executable(ServerProject main.cpp)
+add_executable(ServerProject main.cpp Player.cpp Player.h)

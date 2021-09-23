@@ -1,4 +1,1 @@
-/snap/clion/164/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /home/abner/Server-Client/CrazyBreakout/BreakoutServer
--- Configuring done
--- Generating done
--- Build files have been written to: /home/abner/Server-Client/CrazyBreakout/BreakoutServer/cmake-build-debug
+CMakeLists.txt not found in /home/abner/Server-Client/CrazyBreakout/ClientProject/BreakoutServer Select CMakeLists.txt

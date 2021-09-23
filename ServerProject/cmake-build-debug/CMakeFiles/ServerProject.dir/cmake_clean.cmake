@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/ServerProject.dir/Player.cpp.o"
   "CMakeFiles/ServerProject.dir/main.cpp.o"
   "ServerProject"
   "ServerProject.pdb"

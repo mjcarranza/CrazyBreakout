@@ -82,6 +82,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/abner/Server-Client/CrazyBreakout/ServerProject/Player.cpp">
+			<Option target="ServerProject"/>
+		</Unit>
+		<Unit filename="/home/abner/Server-Client/CrazyBreakout/ServerProject/Player.h">
+			<Option target="ServerProject"/>
+		</Unit>
 		<Unit filename="/home/abner/Server-Client/CrazyBreakout/ServerProject/main.cpp">
 			<Option target="ServerProject"/>
 		</Unit>
