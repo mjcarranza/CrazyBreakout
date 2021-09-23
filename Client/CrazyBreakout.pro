@@ -9,24 +9,31 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Ball.cpp \
     Client.cpp \
-    ball.cpp \
-    blocks.cpp \
-    gamewindow.cpp \
+    Commonblk.cpp \
+    Deepblk.cpp \
+    Doubleblk.cpp \
+    Game.cpp \
+    Internblk.cpp \
+    Paddle.cpp \
+    Tripleblk.cpp \
     main.cpp \
-    mainwindow.cpp \
-    paddle.cpp
+    mainwindow.cpp
 
 HEADERS += \
+    Ball.h \
     Client.h \
-    ball.h \
-    blocks.h \
-    gamewindow.h \
-    mainwindow.h \
-    paddle.h
+    Commonblk.h \
+    Deepblk.h \
+    Doubleblk.h \
+    Game.h \
+    Internblk.h \
+    Paddle.h \
+    Tripleblk.h \
+    mainwindow.h
 
 FORMS += \
-    gamewindow.ui \
     mainwindow.ui
 
 # Default rules for deployment.

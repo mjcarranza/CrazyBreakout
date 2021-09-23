@@ -27,7 +27,9 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout;
+    QSpacerItem *verticalSpacer_3;
     QLabel *logoLabel;
+    QSpacerItem *verticalSpacer_4;
     QLabel *nicknameLabel;
     QHBoxLayout *horizontalLayout_2;
     QSpacerItem *horizontalSpacer;
@@ -51,12 +53,20 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayout = new QVBoxLayout(centralwidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer_3);
+
         logoLabel = new QLabel(centralwidget);
         logoLabel->setObjectName(QString::fromUtf8("logoLabel"));
         logoLabel->setPixmap(QPixmap(QString::fromUtf8(":/images/GameLogo.png")));
         logoLabel->setScaledContents(true);
 
         verticalLayout->addWidget(logoLabel);
+
+        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer_4);
 
         nicknameLabel = new QLabel(centralwidget);
         nicknameLabel->setObjectName(QString::fromUtf8("nicknameLabel"));

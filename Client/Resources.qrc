@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>images/GameLogo.png</file>
-        <file>images/fondo-pared-ladrillo-azul_53876-94010.jpg</file>
         <file>images/56571201-vector-de-ladrillo-de-fondo-azul-oscuro-diseño-de-ilustración-vectorial.jpg</file>
         <file>images/ball.png</file>
         <file>images/common.png</file>

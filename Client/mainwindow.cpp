@@ -1,8 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "gamewindow.h"
 #include "Client.h"
 #include "QMessageBox"
+#include "Game.h"
+
+Game* game;
 Client* client;
 
 
@@ -29,14 +31,12 @@ void *clientRun(void *){
 }
 
 void MainWindow::connecting(){
-    gamewindow *game = new gamewindow();
 
     // Connecting to the server.
     client = new Client();
     pthread_t hiloClient;
     pthread_create(&hiloClient,0,clientRun,nullptr);
     pthread_detach(hiloClient);
-    game->show(); // show game`s window
 
     string json="hola desde el cliente 2!";
 
@@ -56,6 +56,7 @@ void MainWindow::connecting(){
 void MainWindow::on_playBtn_clicked()
 {
     QMessageBox* msg;
+    game = new Game();
 
     nick = ui->nicknameLineEdit->text(); // gets the text in the portLineEdit QString format
     string textNick = nick.toUtf8().constData(); // convert nick to string
@@ -72,9 +73,8 @@ void MainWindow::on_playBtn_clicked()
         msg->show();
     }
     else{
-        gamewindow *game = new gamewindow();
         client->setNickname(textNick);
-        game->show(); // show game`s window
+        game->show();
         close(); // close main window
         // llamar var bool que diga is playingt
 
