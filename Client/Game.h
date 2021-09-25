@@ -5,35 +5,37 @@
 #include <QGraphicsScene>
 #include <QLabel>
 #include <QWidget>
-
+/**
+ * @brief The Game class runs the game interface and manages all the game process
+ */
 class Game: public QGraphicsView{
+private:
+    // Private Attributes
+    int totalCol;
+    int totalFil = 10;
+    int totalCommon = 60;
+    int totaldouble = 60;
+    int totalTriple = 60;
+    int totalIntern = 60;
+    int totalDeep = 20;
+
+    int py;
+    int advY = 0;
+    int advX = 0;
+    int random;
+
 public:
-
-    // Attributes
+    // Public Attributes
     QGraphicsScene* scene;
-
     QLabel *score;
     QLabel *scoreNum;
     QLabel *Player;
     QLabel *nickName;
 
-    int py;
-    int advY = 0;
-    int advX = 0;
-    int random; // between 1-5
-
-    int totalCol;
-    int totalFil = 15;
-    int totalCommon = 50;
-    int totaldouble = 50;
-    int totalTriple = 50;
-    int totalIntern = 50;
-    int totalDeep = 50;
-
-    // constructors
+    // Constructor
     Game(QWidget* parent=NULL);
 
-    // public methods
+    // Methods
     int randomNumber();
 };
 

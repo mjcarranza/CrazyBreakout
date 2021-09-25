@@ -2,7 +2,9 @@
 #define DOUBLEBLK_H
 
 #include <QGraphicsRectItem>
-
+/**
+ * @brief The DoubleBlk class creates objects of type DoubleBlk
+ */
 class DoubleBlk: public QGraphicsRectItem{
 public:
     // Attributes

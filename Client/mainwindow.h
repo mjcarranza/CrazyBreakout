@@ -7,18 +7,23 @@
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
-
+/**
+ * @brief The MainWindow class shows the first window of the game
+ */
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
-    void connecting();
+    // Attributes
     QString IP;
     QString Port;
     QString nick;
+
+    // Public Methods
+    MainWindow(QWidget *parent = nullptr);
+    ~MainWindow();
+    void connecting();
 
 public slots:
     void on_playBtn_clicked();

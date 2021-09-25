@@ -13,7 +13,9 @@
 #include <arpa/inet.h>
 #include <QString>
 using namespace std;
-
+/**
+ * @brief The Client class connects the game`s interface with the server
+ */
 class Client{
 private:
     int descriptor; // identifies by a number the connected devices
@@ -25,9 +27,6 @@ public:
     Client();
     void Connect(); // run server
     void setMessage(const char* msj);
-
-    // setters
-    void setNickname(string nick);
 
 };
 

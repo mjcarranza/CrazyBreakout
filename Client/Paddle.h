@@ -3,9 +3,15 @@
 
 #include <QGraphicsRectItem>
 #include <QGraphicsSceneMouseEvent>
-
+#include <QBrush>
+/**
+ * @brief The Paddle class creates objects of type Paddle
+ */
 class Paddle: public QGraphicsRectItem{
 public:
+    // Attributes
+    QBrush brush;
+
     // constructors
     Paddle(QGraphicsItem* parent=NULL);
 

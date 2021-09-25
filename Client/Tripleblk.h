@@ -2,7 +2,9 @@
 #define TRIPLEBLK_H
 
 #include <QGraphicsRectItem>
-
+/**
+ * @brief The TripleBlk class creates objects of type TripleBlk
+ */
 class TripleBlk: public QGraphicsRectItem{
 public:
     // Attributes

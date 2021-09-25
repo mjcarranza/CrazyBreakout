@@ -6,20 +6,27 @@
 
 Game* game;
 Client* client;
-
-
+/**
+ * @brief MainWindow::MainWindow constructor
+ * @param parent
+ */
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 }
-
+/**
+ * @brief MainWindow::~MainWindow destructor
+ */
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
+/**
+ * @brief clientRun independent method tries connecting to the server
+ * @return
+ */
 void *clientRun(void *){
 
     try {
@@ -29,7 +36,9 @@ void *clientRun(void *){
     }
     pthread_exit(nullptr);
 }
-
+/**
+ * @brief MainWindow::connecting method creates a new thread for constant communication with server
+ */
 void MainWindow::connecting(){
 
     // Connecting to the server.
@@ -40,9 +49,9 @@ void MainWindow::connecting(){
 
     string json="hola desde el cliente 2!";
 
-    while (true){ // /////////////////////////////// arreglar este bucle para que se ejecute constantemente
+    while (true){ // excecutes constatly to send messages to the server
 
-        //cin>>json;
+        cin>>json;
         if (json == "salir"){
             break;
         }
@@ -50,9 +59,10 @@ void MainWindow::connecting(){
         break;
     }
     delete client;
-    //luego de conectarse al server que se abra la ventana del juego
 }
-
+/**
+ * @brief MainWindow::on_playBtn_clicked checks when the button is clicked to start the game
+ */
 void MainWindow::on_playBtn_clicked()
 {
     QMessageBox* msg;
@@ -73,10 +83,9 @@ void MainWindow::on_playBtn_clicked()
         msg->show();
     }
     else{
-        client->setNickname(textNick);
         game->show();
         close(); // close main window
-        // llamar var bool que diga is playingt
+        // call boolean variable isPlaying
 
         //this->connecting(); // connecting to server.
     }

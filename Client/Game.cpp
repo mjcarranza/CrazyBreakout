@@ -6,10 +6,13 @@
 #include "Tripleblk.h"
 #include "Internblk.h"
 #include "Deepblk.h"
-
+#include "Client.h"
+/**
+ * @brief Game::Game Cosnstructor for the scene. Show all the game`s components
+ * @param parent
+ */
 Game::Game(QWidget *parent): QGraphicsView(parent){
     // initialize scene
-    // QGraphicsScene::addWidget( QWidget * widget, Qt::WindowFlags wFlags = 0 )
     scene = new QGraphicsScene(0,0,795,600);
     scene->setBackgroundBrush (QBrush (QImage ("/home/user/Escritorio/Repos GitHub/CrazyBreakout/images/fondo.jpg")));
     setScene(scene);
@@ -17,7 +20,7 @@ Game::Game(QWidget *parent): QGraphicsView(parent){
     // Catch mouse motion to set the paddle`s position
     setMouseTracking(true);
 
-    // Add score label
+    // Add label for "score"
     score = new QLabel();
     score->setText("SCORE:");
     score->setStyleSheet("Background-color: darkblue; color: lightgreen");
@@ -54,7 +57,7 @@ Game::Game(QWidget *parent): QGraphicsView(parent){
     ball->setPos(200,500);
     scene->addItem(ball);
 
-    // create a paddle ;)
+    // create a paddle
     Paddle* paddle = new Paddle();
     paddle->setPos(150,575);
     scene->addItem(paddle);
@@ -66,7 +69,7 @@ Game::Game(QWidget *parent): QGraphicsView(parent){
         totalCol = 12;
         for (int j=0; j<totalCol; j++) {
             random = randomNumber();
-            if(random == 1){
+            if(random <= 1){
                 if(totalCommon != 0){
                     CommonBlk *cblks = new CommonBlk();
                     cblks->setPos(10+advX,py);
@@ -84,7 +87,7 @@ Game::Game(QWidget *parent): QGraphicsView(parent){
                 }
             }else if(random == 3){
                 if(totalTriple != 0){
-                    DeepBlk *tblks = new DeepBlk();
+                    TripleBlk *tblks = new TripleBlk();
                     tblks->setPos(10+advX,py);
                     scene->addItem(tblks);
                     totalTriple--;
@@ -99,11 +102,11 @@ Game::Game(QWidget *parent): QGraphicsView(parent){
                     advX += 65;
                 }
             }else if(random == 5){
-                if(totalDeep != 0){
+                if(totalDeep > 0){
                     DeepBlk *deepblks = new DeepBlk();
                     deepblks->setPos(10+advX,py);
                     scene->addItem(deepblks);
-                    totalDeep--;
+                    totalDeep -= 1;
                     advX += 65;
                 }
             }
@@ -112,8 +115,11 @@ Game::Game(QWidget *parent): QGraphicsView(parent){
         advY += 20;
     }
 }
-
-int Game::randomNumber() //range : [1, 5]
+/**
+ * @brief Game::randomNumber gets a random number from 1 to 5
+ * @return returns a number
+ */
+int Game::randomNumber()
 {
    static bool first = true;
    if (first)

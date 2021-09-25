@@ -2,7 +2,9 @@
 #define INTERNBLK_H
 
 #include <QGraphicsRectItem>
-
+/**
+ * @brief The InternBlk class creates objects of type InternBlk
+ */
 class InternBlk: public QGraphicsRectItem{
 public:
     // Attributes

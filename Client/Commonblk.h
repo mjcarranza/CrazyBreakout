@@ -2,7 +2,9 @@
 #define COMMONBLK_H
 
 #include <QGraphicsRectItem>
-
+/**
+ * @brief The CommonBlk class creates objects of type CommonBlk
+ */
 class CommonBlk: public QGraphicsRectItem{
 public:
     // Attributes

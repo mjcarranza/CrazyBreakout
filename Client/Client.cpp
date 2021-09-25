@@ -1,10 +1,11 @@
 #include "Client.h"
 
 string nickname;
-
+/**
+ * @brief Client::Client constructor creates a new client
+ */
 Client::Client(){}
 void Client::Connect() {
-    cout<<"valor de nick en connect> "<<nickname<<endl;
 
     // create a descriptor
     descriptor = socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
@@ -24,8 +25,8 @@ void Client::Connect() {
     pthread_create(&hilo,0,Client::Manager,(void*) this);
 }
 /**
- * @brief Client::Manager
- * @param obj
+ * @brief Client::Manager manages the connection between the client and the server
+ * @param obj any type
  * @return
  */
 void *Client::Manager(void *obj) {
@@ -33,7 +34,7 @@ void *Client::Manager(void *obj) {
     while (true){
         string message;
         char buffer[1024] = {0};
-        // condition: if the player closes the game ---> break;
+        // condition: if the player closes the game closes;
         while (true){
             memset(buffer,0,1024);
             int bytes = recv(c->descriptor, buffer, 1024, 0);
@@ -46,26 +47,16 @@ void *Client::Manager(void *obj) {
                 break;
             }
         }
-        cout<<message<<endl; // en mensaje viene lo que se envio desde el servidor. ver hacia donde mando esto.
+        cout<<message<<endl; // message from server. see what to do
     }
     close(c->descriptor);
     pthread_exit(NULL);
 }
 /**
- * @brief Client::setMessage
+ * @brief Client::setMessage sends a message to the server
  * @param msj
  */
 void Client::setMessage(const char *msj) {
     send(descriptor,msj, strlen(msj),0);
 }
-
-/**
- * @brief Client::setNickname
- * @param nick
- */
-void Client::setNickname(string nick)
-{
-    nickname = nick; // save nickname in a global variable
-}
-
 

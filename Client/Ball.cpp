@@ -8,11 +8,18 @@
 #include "Tripleblk.h"
 #include "Internblk.h"
 #include "Deepblk.h"
+#include "Client.h"
 
+Client *clt;
 extern Game* game;
-
+/**
+ * @brief Ball::Ball constructor for Ball class creates a new ball with its required attributes
+ * @param parent
+ */
 Ball::Ball(QGraphicsItem *parent): QGraphicsRectItem(parent), QObject(){
-    // draw rect
+    /**
+     * @brief draw a rectangle for the ball
+     */
     setRect(0,0,20,20);
     QBrush brush;
     brush.setTextureImage(QImage ("/home/user/Escritorio/Repos GitHub/CrazyBreakout/images/ball.png"));
@@ -42,39 +49,37 @@ void Ball::moveBall(){
  * @brief Ball::reverseVelocity If ball is out of bounds reverse the velocity.
  */
 void Ball::reverseVelocity(){
-    // check if out of bound, if so, reverse the proper velocity
+    // Check if out of bound, if so, reverse the proper velocity
     double screenW = game->width();
 
-    // left edge
+    // If the ball collides left edge
     if (mapToScene(rect().topLeft()).x() <= 0){
         velX = -1 * velX;
     }
 
-    // right edge
+    // If the ball collides right edge
     if (mapToScene(rect().topRight()).x() >= screenW){
         velX = -1 * velX;
     }
 
-    // top edge
+    // If the ball collides top edge
     if (mapToScene(rect().topLeft()).y() <= 0){
         velY = -1 * velY;
     }
-
-    // bottom edge - NONE (can fall through bottom)
 }
 /**
  * @brief Ball::checkPadCollision If collides with paddle, reverse yVelocity, and add xVelocity
  * depending on where (in the x axis) the ball hits the paddle.
  */
 void Ball::checkPadCollision(){
-    QList<QGraphicsItem*> cItems = collidingItems();
-    for (size_t i = 0, n = cItems.size(); i < n; ++i){
-        Paddle* paddle = dynamic_cast<Paddle*>(cItems[i]);
+    QList<QGraphicsItem*> Items = collidingItems();
+    for (size_t i = 0, n = Items.size(); i < n; ++i){
+        Paddle* paddle = dynamic_cast<Paddle*>(Items[i]);
         if (paddle){
-            // reverse the y velocity
+            // Reverse the y velocity
             velY = -1 * velY;
 
-            // add to x velocity depending on where it hits the paddle
+            // Add to x velocity depending on where it hits the paddle
             double ballX = getCenterX();
             double paddleX = paddle->getCenterX();
 
@@ -96,18 +101,19 @@ void Ball::checkBlckCollision(){
     QList<QGraphicsItem*> iItems = collidingItems();
     QList<QGraphicsItem*> deepItems = collidingItems();
 
+    // Check for collisions
     for (size_t i = 0, n = cItems.size(); i < n; ++i){
         CommonBlk* cblock = dynamic_cast<CommonBlk*>(cItems[i]);
         DoubleBlk *dblock = dynamic_cast<DoubleBlk*>(dItems[i]);
         TripleBlk *tblock = dynamic_cast<TripleBlk*>(tItems[i]);
         InternBlk *iblock = dynamic_cast<InternBlk*>(iItems[i]);
         DeepBlk *deepblock = dynamic_cast<DeepBlk*>(deepItems[i]);
-        // collides with block
+        double yPad = 9;
+        double xPad = 59;
+        double ballx = pos().x();
+        double bally = pos().y();
+        // If the ballcollides with a cblock type
         if (cblock){
-            double yPad = 5;
-            double xPad = 5;
-            double ballx = pos().x();
-            double bally = pos().y();
             double blockx = cblock->pos().x();
             double blocky = cblock->pos().y();
 
@@ -134,13 +140,13 @@ void Ball::checkBlckCollision(){
             // delete block(s)
             game->scene->removeItem(cblock);
             delete cblock;
+            // TELL SERVER ABOUT THE COLLISION //
+            // TELL SERVER TO ADD 10 POINTS TO SCORE //
+
+            // LISTEN TO THE SERVER TO UPDATE TOTAL POINTS TO THE SCORE //
         }
-        // collides with block
+        // If the ballcollides with a dblock type
         if (dblock){
-            double yPad = 5;
-            double xPad = 5;
-            double ballx = pos().x();
-            double bally = pos().y();
             double blockx = dblock->pos().x();
             double blocky = dblock->pos().y();
 
@@ -167,12 +173,13 @@ void Ball::checkBlckCollision(){
             // delete block(s)
             game->scene->removeItem(dblock);
             delete dblock;
+            // TELL SERVER ABOUT THE COLLISION //
+            // TELL SERVER TO ADD 10 POINTS TO SCORE //
+
+            // LISTEN TO THE SERVER TO UPDATE TOTAL POINTS TO THE SCORE //
         }
+        // If the ballcollides with a tblock type
         if (tblock){
-            double yPad = 5;
-            double xPad = 5;
-            double ballx = pos().x();
-            double bally = pos().y();
             double blockx = tblock->pos().x();
             double blocky = tblock->pos().y();
 
@@ -199,12 +206,16 @@ void Ball::checkBlckCollision(){
             // delete block(s)
             game->scene->removeItem(tblock);
             delete tblock;
+            // TELL SERVER ABOUT THE COLLISION //
+            // TELL SERVER TO ADD 10 POINTS TO SCORE //
+
+            // LISTEN TO THE SERVER TO UPDATE TOTAL POINTS TO THE SCORE //
         }
+        // If the ballcollides with an iblock type
         if (iblock){
-            double yPad = 5;
-            double xPad = 5;
-            double ballx = pos().x();
-            double bally = pos().y();
+
+            // CHECH FOR DEPH LEVEL WITH AN IF CONDITION //////////////////////////////////////////
+
             double blockx = iblock->pos().x();
             double blocky = iblock->pos().y();
 
@@ -231,12 +242,13 @@ void Ball::checkBlckCollision(){
             // delete block(s)
             game->scene->removeItem(iblock);
             delete iblock;
+            // TELL SERVER ABOUT THE COLLISION //
+            // TELL SERVER TO ADD 10 POINTS TO SCORE //
+
+            // LISTEN TO THE SERVER TO UPDATE TOTAL POINTS TO THE SCORE //
         }
+        // If the ballcollides with a deepblock type
         if (deepblock){
-            double yPad = 5;
-            double xPad = 5;
-            double ballx = pos().x();
-            double bally = pos().y();
             double blockx = deepblock->pos().x();
             double blocky = deepblock->pos().y();
 
@@ -260,9 +272,10 @@ void Ball::checkBlckCollision(){
                 velX = -1 * velX;
             }
 
-            // delete block(s)
-            game->scene->removeItem(deepblock);
-            delete deepblock;
+            // TELL SERVER ABOUT THE COLLISION //
+            // TELL SERVER TO ADD DEPTH LEVEL TO THE BALL //
+
+            // LISTEN TO THE SERVER TO UPDATE DEPTH LEVEL //
         }
     }
 }

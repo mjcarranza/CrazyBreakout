@@ -1,13 +1,15 @@
 #include "Paddle.h"
-#include <QBrush>
-
+/**
+ * @brief Paddle::Paddle constructor creates a new Paddle with its required attributes
+ * @param parent
+ */
 Paddle::Paddle(QGraphicsItem *parent){
-    // draw rect
+    /**
+     * @brief draw a rectangle for the block
+     */
     setRect(0,0,60,10);
-    QBrush brush;
     brush.setStyle(Qt::SolidPattern);
-    brush.setColor(Qt::green);
-    brush.setTextureImage(QImage ("/home/user/Escritorio/Repos GitHub/CrazyBreakout/images/5.png"));
+    brush.setColor(Qt::gray);
     setBrush(brush);
 }
 

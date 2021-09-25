@@ -2,7 +2,9 @@
 #define DEEPBLK_H
 
 #include <QGraphicsRectItem>
-
+/**
+ * @brief The DeepBlk class creates objects of type DeepBlk
+ */
 class DeepBlk: public QGraphicsRectItem{
 public:
     // Attributes
