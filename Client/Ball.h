@@ -2,6 +2,10 @@
 #define BALL_H
 
 #include <QGraphicsRectItem>
+#include <iostream>
+#include <sstream>
+#include <string>
+using namespace std;
 /**
  * @brief The Ball class creates objects of type Ball
  */
@@ -13,6 +17,7 @@ public:
 
     // public methods
     double getCenterX();
+    void connecting();
 
 public slots:
     // public slots
@@ -22,11 +27,16 @@ private:
     // private attributes
     double velX;
     double velY;
+    int depthLvl = 0;
+    int addBallCounter = 0;
+    int ballCounter = 1;
 
     // private methods
     void reverseVelocity();
     void checkPadCollision();
+    void checkBallLeft();
     void checkBlckCollision();
+    void addBall();
 };
 
 #endif // BALL_H

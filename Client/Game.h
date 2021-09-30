@@ -18,6 +18,7 @@ private:
     int totalTriple = 60;
     int totalIntern = 60;
     int totalDeep = 20;
+    QString nick;
 
     int py;
     int advY = 0;
@@ -37,6 +38,9 @@ public:
 
     // Methods
     int randomNumber();
+    void setNickName(QString n);
+    void setScore(QString scr);
+    void addNewBall();
 };
 
 #endif // GAME_H

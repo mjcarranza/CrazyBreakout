@@ -6,7 +6,6 @@
 #include "Tripleblk.h"
 #include "Internblk.h"
 #include "Deepblk.h"
-#include "Client.h"
 /**
  * @brief Game::Game Cosnstructor for the scene. Show all the game`s components
  * @param parent
@@ -43,14 +42,6 @@ Game::Game(QWidget *parent): QGraphicsView(parent){
     Player->setFont(QFont("Tlwg Typo BoldOblique",16));
     Player->setGeometry(5,10,90,25);
     scene->addWidget(Player);
-
-    // Add label for nickname
-    nickName = new QLabel();
-    nickName->setText("Player1"); // default name
-    nickName->setStyleSheet("Background-color: darkblue; color: lightgreen");
-    nickName->setFont(QFont("Tlwg Typo BoldOblique",16));
-    nickName->setGeometry(105,10,200,25);
-    scene->addWidget(nickName);
 
     // create a ball
     Ball* ball = new Ball();
@@ -128,4 +119,43 @@ int Game::randomNumber()
       first = false;
    }
    return 1 + rand() % (( 5 + 1 ) - 1);
+}
+/**
+ * @brief Game::setNickName writes the nickname entered by the player in the label for nickname.
+ * @param n is the nickname as a QString.
+ */
+void Game::setNickName(QString n)
+{
+    // Add label for nickname
+    nick = n;
+    nickName = new QLabel();
+    nickName->setText(nick); // default name
+    nickName->setStyleSheet("Background-color: darkblue; color: lightgreen");
+    nickName->setFont(QFont("Tlwg Typo BoldOblique",16));
+    nickName->setGeometry(105,10,200,25);
+    scene->addWidget(nickName);
+
+    // send the nickname to the server by ball.cpp
+}
+/**
+ * @brief Game::setScore sets the score to the label for score as a number
+ * @param scr score as a QString
+ */
+void Game::setScore(QString scr)
+{
+    // scr is the obtained score
+    // Do it depending on what the server says from ball.cpp (call this method from ball.cpp
+    // with score as a parameter)
+    scoreNum->setText(scr); // the qstring is what the server says
+    scoreNum->setStyleSheet("Background-color: darkblue; color: lightgreen");
+    scoreNum->setFont(QFont("Tlwg Typo BoldOblique",16));
+    scoreNum->setGeometry(700,10,80,25);
+}
+
+void Game::addNewBall()
+{
+    // create a ball
+    Ball* ball = new Ball();
+    ball->setPos(200,500);
+    scene->addItem(ball);
 }

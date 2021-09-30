@@ -18,6 +18,7 @@ SOURCES += \
     Internblk.cpp \
     Paddle.cpp \
     Tripleblk.cpp \
+    gameover.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -31,9 +32,11 @@ HEADERS += \
     Internblk.h \
     Paddle.h \
     Tripleblk.h \
+    gameover.h \
     mainwindow.h
 
 FORMS += \
+    gameover.ui \
     mainwindow.ui
 
 # Default rules for deployment.

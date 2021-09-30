@@ -25,8 +25,8 @@ private:
 
 public:
     Client();
-    void Connect(); // run server
-    void setMessage(const char* msj);
+        void Connect(const char* ip, int port); // run server
+        void setMessage(const char* msj);
 
 };
 

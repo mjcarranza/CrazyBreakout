@@ -5,7 +5,6 @@
 #include "Game.h"
 
 Game* game;
-Client* client;
 /**
  * @brief MainWindow::MainWindow constructor
  * @param parent
@@ -23,43 +22,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-/**
- * @brief clientRun independent method tries connecting to the server
- * @return
- */
-void *clientRun(void *){
 
-    try {
-        client->Connect();
-    } catch (string ex) {
-        cout<< ex <<endl;
-    }
-    pthread_exit(nullptr);
-}
-/**
- * @brief MainWindow::connecting method creates a new thread for constant communication with server
- */
-void MainWindow::connecting(){
-
-    // Connecting to the server.
-    client = new Client();
-    pthread_t hiloClient;
-    pthread_create(&hiloClient,0,clientRun,nullptr);
-    pthread_detach(hiloClient);
-
-    string json="hola desde el cliente 2!";
-
-    while (true){ // excecutes constatly to send messages to the server
-
-        cin>>json;
-        if (json == "salir"){
-            break;
-        }
-        client->setMessage(json.c_str());
-        break;
-    }
-    delete client;
-}
 /**
  * @brief MainWindow::on_playBtn_clicked checks when the button is clicked to start the game
  */
@@ -84,10 +47,9 @@ void MainWindow::on_playBtn_clicked()
     }
     else{
         game->show();
+        game->setNickName(nick);
         close(); // close main window
         // call boolean variable isPlaying
-
-        //this->connecting(); // connecting to server.
     }
 
 }
