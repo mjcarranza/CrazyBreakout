@@ -106,17 +106,17 @@ CMakeFiles/ServerProject.dir/Ball.cpp.s: cmake_force
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abner/Server-Client/CrazyBreakout/ServerProject/Ball.cpp -o CMakeFiles/ServerProject.dir/Ball.cpp.s
 
 CMakeFiles/ServerProject.dir/Block.cpp.o: CMakeFiles/ServerProject.dir/flags.make
-CMakeFiles/ServerProject.dir/Block.cpp.o: Block.cpp
+CMakeFiles/ServerProject.dir/Block.cpp.o: ../Block.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/abner/Server-Client/CrazyBreakout/ServerProject/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ServerProject.dir/Block.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ServerProject.dir/Block.cpp.o -c /home/abner/Server-Client/CrazyBreakout/ServerProject/cmake-build-debug/Block.cpp
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ServerProject.dir/Block.cpp.o -c /home/abner/Server-Client/CrazyBreakout/ServerProject/Block.cpp
 
 CMakeFiles/ServerProject.dir/Block.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ServerProject.dir/Block.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abner/Server-Client/CrazyBreakout/ServerProject/cmake-build-debug/Block.cpp > CMakeFiles/ServerProject.dir/Block.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/abner/Server-Client/CrazyBreakout/ServerProject/Block.cpp > CMakeFiles/ServerProject.dir/Block.cpp.i
 
 CMakeFiles/ServerProject.dir/Block.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ServerProject.dir/Block.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abner/Server-Client/CrazyBreakout/ServerProject/cmake-build-debug/Block.cpp -o CMakeFiles/ServerProject.dir/Block.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/abner/Server-Client/CrazyBreakout/ServerProject/Block.cpp -o CMakeFiles/ServerProject.dir/Block.cpp.s
 
 # Object files for target ServerProject
 ServerProject_OBJECTS = \
