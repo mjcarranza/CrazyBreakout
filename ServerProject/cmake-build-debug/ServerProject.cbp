@@ -94,6 +94,12 @@
 		<Unit filename="/home/abner/Server-Client/CrazyBreakout/ServerProject/Block.h">
 			<Option target="ServerProject"/>
 		</Unit>
+		<Unit filename="/home/abner/Server-Client/CrazyBreakout/ServerProject/Game.cpp">
+			<Option target="ServerProject"/>
+		</Unit>
+		<Unit filename="/home/abner/Server-Client/CrazyBreakout/ServerProject/Game.h">
+			<Option target="ServerProject"/>
+		</Unit>
 		<Unit filename="/home/abner/Server-Client/CrazyBreakout/ServerProject/Player.cpp">
 			<Option target="ServerProject"/>
 		</Unit>

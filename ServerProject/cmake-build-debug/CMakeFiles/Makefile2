@@ -81,12 +81,12 @@ clean: CMakeFiles/ServerProject.dir/clean
 CMakeFiles/ServerProject.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerProject.dir/build.make CMakeFiles/ServerProject.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerProject.dir/build.make CMakeFiles/ServerProject.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/abner/Server-Client/CrazyBreakout/ServerProject/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5 "Built target ServerProject"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/abner/Server-Client/CrazyBreakout/ServerProject/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target ServerProject"
 .PHONY : CMakeFiles/ServerProject.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ServerProject.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/abner/Server-Client/CrazyBreakout/ServerProject/cmake-build-debug/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/abner/Server-Client/CrazyBreakout/ServerProject/cmake-build-debug/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ServerProject.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/abner/Server-Client/CrazyBreakout/ServerProject/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/ServerProject.dir/rule
