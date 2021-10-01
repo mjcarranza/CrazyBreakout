@@ -35,11 +35,14 @@ int main() {
         cin >> gender;
         json_message["gender"] = gender;
 
+        //Serialize the json object as string
         std::string msg = json_message.dump();
         if (name=="exit" || age =="exit"||gender=="exit")
             break;
+
+        //sends the message as a character array
         server->setMessage(msg.c_str());
     }
-
+    
     return 0;
 }

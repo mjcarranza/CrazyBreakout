@@ -72,8 +72,7 @@ void * SocketServer::ClientController(void *obj) {
 }
 
 void SocketServer::setMessage(const char *msn) {
-    for(int i=0; i<clients.size();i++){
-        send(clients[i], msn, strlen(msn),0);
-
+    for(int i=0; i<clients.size();i++) {
+        send(clients[i], msn, strlen(msn), 0);
     }
 }

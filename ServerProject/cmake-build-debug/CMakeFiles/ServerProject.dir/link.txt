@@ -1,1 +1,1 @@
-/usr/bin/c++ -pthread -g CMakeFiles/ServerProject.dir/main.cpp.o CMakeFiles/ServerProject.dir/Player.cpp.o -o ServerProject 
+/usr/bin/c++ -pthread -g CMakeFiles/ServerProject.dir/main.cpp.o CMakeFiles/ServerProject.dir/Player.cpp.o CMakeFiles/ServerProject.dir/Ball.cpp.o CMakeFiles/ServerProject.dir/Block.cpp.o -o ServerProject 

@@ -129,6 +129,54 @@ ServerProject/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerProject.dir/build.make CMakeFiles/ServerProject.dir/build
 .PHONY : ServerProject/fast
 
+Ball.o: Ball.cpp.o
+.PHONY : Ball.o
+
+# target to build an object file
+Ball.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerProject.dir/build.make CMakeFiles/ServerProject.dir/Ball.cpp.o
+.PHONY : Ball.cpp.o
+
+Ball.i: Ball.cpp.i
+.PHONY : Ball.i
+
+# target to preprocess a source file
+Ball.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerProject.dir/build.make CMakeFiles/ServerProject.dir/Ball.cpp.i
+.PHONY : Ball.cpp.i
+
+Ball.s: Ball.cpp.s
+.PHONY : Ball.s
+
+# target to generate assembly for a file
+Ball.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerProject.dir/build.make CMakeFiles/ServerProject.dir/Ball.cpp.s
+.PHONY : Ball.cpp.s
+
+Block.o: Block.cpp.o
+.PHONY : Block.o
+
+# target to build an object file
+Block.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerProject.dir/build.make CMakeFiles/ServerProject.dir/Block.cpp.o
+.PHONY : Block.cpp.o
+
+Block.i: Block.cpp.i
+.PHONY : Block.i
+
+# target to preprocess a source file
+Block.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerProject.dir/build.make CMakeFiles/ServerProject.dir/Block.cpp.i
+.PHONY : Block.cpp.i
+
+Block.s: Block.cpp.s
+.PHONY : Block.s
+
+# target to generate assembly for a file
+Block.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerProject.dir/build.make CMakeFiles/ServerProject.dir/Block.cpp.s
+.PHONY : Block.cpp.s
+
 Player.o: Player.cpp.o
 .PHONY : Player.o
 
@@ -186,6 +234,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... ServerProject"
+	@echo "... Ball.o"
+	@echo "... Ball.i"
+	@echo "... Ball.s"
+	@echo "... Block.o"
+	@echo "... Block.i"
+	@echo "... Block.s"
 	@echo "... Player.o"
 	@echo "... Player.i"
 	@echo "... Player.s"

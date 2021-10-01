@@ -20,8 +20,8 @@ using namespace std;
 struct dataSocket{
     int descriptor;
     sockaddr_in info;
-
 };
+
 class SocketServer{
 public:
     SocketServer();

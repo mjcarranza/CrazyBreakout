@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/ServerProject.dir/Ball.cpp.o"
+  "CMakeFiles/ServerProject.dir/Block.cpp.o"
   "CMakeFiles/ServerProject.dir/Player.cpp.o"
   "CMakeFiles/ServerProject.dir/main.cpp.o"
   "ServerProject"
