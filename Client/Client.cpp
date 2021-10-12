@@ -1,6 +1,12 @@
 #include "Client.h"
+#include "Ball.h"
+#include "json.hpp"
+#include "Game.h"
 
-string nickname;
+using json = nlohmann::json;
+Ball* ball2;
+Game* game2;
+
 /**
  * @brief Client::Client constructor creates a new client
  */
@@ -32,7 +38,7 @@ void Client::Connect(const char* ip, int port) {
  */
 void *Client::Manager(void *obj) {
     Client* c = (Client*)obj;
-    while (true){ // this loop is not necessary ////////////////////////////////////////////////
+    while (true){
         string message;
         char buffer[1024] = {0};
         while (true){
@@ -47,9 +53,45 @@ void *Client::Manager(void *obj) {
                 break;
             }
         }
+        // se parsea el mensaje enviado desde el cliente
+        auto json = json::parse(message);
+
+        // action for increasing the score
+        if (json["type"] == "addScore"){
+            string msj = json["score"];
+            QString str = QString::fromUtf8(msj.c_str());
+            game2->setScore(str);
+        }
+        // action to reduce paddle`s size
+        if (json["type"] == "reduce"){
+            game2->reducePadd();
+        }
+        // action to add a new ball
+        if (json["type"] == "newBall"){
+            game2->addNewBall();
+            ball2->addBall();
+        }
+        // action to delete a ball
+        if (json["type"] == "deleteBall"){
+            string msj = json["index"];
+            ball2->deleteBall(msj);
+        }
+        // action to delete a block
+        if (json["type"] == "deleteBlk"){
+            string blkType = json["block"];
+            string blkIndex = json["index"];
+            ball2->deleteBlk(blkType, blkIndex);
+        }
+        // action to add depth level
+        if (json["type"] == "depthLevel"){
+            string msj = json["level"];
+            QString str = QString::fromUtf8(msj.c_str());
+            ball2->addDepthLevel(str);
+        }
+
         cout<<message<<endl; // message sent from server.
     }
-    close(c->descriptor); // see if it is necessary!!!
+    close(c->descriptor);
     pthread_exit(nullptr);
 }
 /**

@@ -18,6 +18,12 @@ public:
     // public methods
     double getCenterX();
     void connecting();
+    void addBall();
+    void deleteBlk(string type, string index);
+    void deleteBall(string index);
+    void addDepthLevel(QString lvl);
+    void blkCreated(string blkType);
+    void notify(QString str);
 
 public slots:
     // public slots
@@ -36,7 +42,7 @@ private:
     void checkPadCollision();
     void checkBallLeft();
     void checkBlckCollision();
-    void addBall();
+
 };
 
 #endif // BALL_H

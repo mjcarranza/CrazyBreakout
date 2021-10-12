@@ -18,6 +18,7 @@ private:
     int totalTriple = 60;
     int totalIntern = 60;
     int totalDeep = 20;
+    int totalScr = 0;
     QString nick;
 
     int py;
@@ -32,6 +33,8 @@ public:
     QLabel *scoreNum;
     QLabel *Player;
     QLabel *nickName;
+    QLabel *depth;
+    QLabel *depthNum;
 
     // Constructor
     Game(QWidget* parent=NULL);
@@ -41,6 +44,8 @@ public:
     void setNickName(QString n);
     void setScore(QString scr);
     void addNewBall();
+    void reducePadd();
+    void updatedepth(QString level);
 };
 
 #endif // GAME_H

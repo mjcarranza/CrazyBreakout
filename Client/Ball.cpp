@@ -16,6 +16,7 @@ using json = nlohmann::json;
 Client* client;
 gameover* gameOver;
 extern Game* game;
+Paddle* padd;
 /**
  * @brief Ball::Ball constructor for Ball class creates a new ball with its required attributes
  * @param parent
@@ -36,7 +37,7 @@ Ball::Ball(QGraphicsItem *parent): QGraphicsRectItem(parent), QObject(){
     QTimer* timer = new QTimer();
     connect(timer,SIGNAL(timeout()),this,SLOT(moveBall()));
     timer->start(15);
-    this->connecting();
+    this->connecting(); ///////////////////////////////////////////////////////////////////////////
 }
 /**
  * @brief clientRun independent method tries connecting to the server
@@ -65,24 +66,11 @@ template <typename T> string ptrToStr(T ptr){
  * @brief MainWindow::connecting method creates a new thread for constant communication with server
  */
 void Ball::connecting(){
-
     // Connecting to the server.
     client = new Client();
     pthread_t hiloClient;
     pthread_create(&hiloClient,0,clientRun,nullptr);
     pthread_detach(hiloClient);
-
-    while (true){
-        cout<<"leyendo mensajes"<<endl;
-        string json;
-        //cin>>json;
-        if (json == "salir"){
-            break;
-        }
-        client->setMessage(json.c_str());
-        break;
-    }
-    //delete client;
 }
 /**
  * @brief Ball::getCenterX gets the center of the ball
@@ -98,11 +86,8 @@ void Ball::moveBall(){
 
     reverseVelocity();
     checkPadCollision();
-    checkBlckCollision();
-    // method to check if the ball left the playing area
-    //checkBallLeft();
-    // call method from game to add a new ball
-    //addBall();
+    checkBlckCollision();// method to check a paddle collision
+    checkBallLeft();// method to check if the ball left the playing area
     moveBy(velX,velY);
 }
 /**
@@ -149,6 +134,11 @@ void Ball::checkPadCollision(){
             return;
         }
     }
+    if (padd->getSize() <= 0){
+        // Show GameOver window
+        gameOver = new gameover();
+        gameOver->show();
+    }
 }
 /**
  * @brief Ball::checkBallLeft checks if the ball left the playing area
@@ -158,31 +148,23 @@ void Ball::checkBallLeft(){
     QList<QGraphicsItem*> Items = collidingItems();
     for (size_t i = 0, n = Items.size(); i < n; ++i){
         Ball* ball = dynamic_cast<Ball*>(Items[i]);
-        if (bally > 650){
-            json message;
-            string strball = ptrToStr(ball);
-            message["type"] = "ballfell";
-            message["ball"] = strball;
+        if (ball){
+            if (bally > 650){
+                ballCounter--;
+                json message;
+                string strball = ptrToStr(ball);
+                message["type"] = "ballfell";
+                message["ball"] = to_string(i);
 
-            string msg = message.dump();
-            client->setMessage(msg.c_str());
-            // listen for serve`s response (should be reduce paddle size by 5px )
-//            if(reduce paddle size){
-//                delete ball;
-//                // reduce ballCounter
-//                // reduce paddle size
-//            }
+                string msg = message.dump();
+                client->setMessage(msg.c_str());
+            }
         }
-        if (ballCounter <= 0){
-            // Show GameOver window
-            gameOver = new gameover();
-            gameOver->show();
-        }
-//        else if (paddle.size <= 0){
-//            // Show GameOver window
-//            gameOver = new gameover();
-//            gameOver->show();
-//        }
+    }
+    if (ballCounter <= 0){
+        // Show GameOver window
+        gameOver = new gameover();
+        gameOver->show();
     }
 }
 /**
@@ -212,144 +194,138 @@ void Ball::checkBlckCollision(){
         double ballx = pos().x();
         double bally = pos().y();
 
-        // If the ballcollides with a cblock type
+        // If the ball collides with a cblock type
         if (cblock){
             double blockx = cblock->pos().x();
             double blocky = cblock->pos().y();
 
-            // If ball collides from bottom
-            if (bally > blocky + yPad && velY < 0){
-                velY = -1 * (velY + 0.2);
-                velX = velX + 0.2;
+            if (depthLvl <= 0){
+                // If ball collides from bottom
+                if (bally > blocky + yPad && velY < 0){
+                    velY = -1 * (velY + 0.2);
+                    velX = velX + 0.2;
+                }
+
+                // If ball collides from top
+                if (blocky > bally + yPad && velY > 0 ){
+                    velY = -1 * (velY + 0.2);
+                    velX = velX + 0.2;
+                }
+
+                // If ball collides from right
+                if (ballx > blockx + xPad && velX < 0){
+                    velX = -1 * (velX + 0.2);
+                    velY = velY + 0.5;
+                }
+
+                // If ball collides from left
+                if (blockx > ballx + xPad && velX > 0){
+                    velX = -1 * (velX + 0.2);
+                    velY = velY + 0.2;
+                }
+                // TELL SERVER ABOUT THE COLLISION //
+                json message;
+                string blkindx = to_string(i);
+                string ballindx = to_string(i);
+                message["type"] = "collision";
+                message["blkType"] = "common";
+                message["block"] = blkindx;
+                message["ball"] = ballindx;
+
+                string msg = message.dump();
+                client->setMessage(msg.c_str());
             }
-
-            // If ball collides from top
-            if (blocky > bally + yPad && velY > 0 ){
-                velY = -1 * (velY + 0.2);
-                velX = velX + 0.2;
+            else{
+                depthLvl --;
             }
-
-            // If ball collides from right
-            if (ballx > blockx + xPad && velX < 0){
-                velX = -1 * (velX + 0.2);
-                velY = velY + 0.5;
-            }
-
-            // If ball collides from left
-            if (blockx > ballx + xPad && velX > 0){
-                velX = -1 * (velX + 0.2);
-                velY = velY + 0.2;
-            }
-
-            // delete block(s)
-            game->scene->removeItem(cblock);
-            delete cblock;
-            // TELL SERVER ABOUT THE COLLISION //
-            // TELL SERVER TO ADD 10 POINTS TO SCORE //
-            json message;
-            string strblk = ptrToStr(cblock);
-            string strball = ptrToStr(ball);
-            message["type"] = "collision";
-            message["block"] = strblk;
-            message["ball"] = strball;
-
-            string msg = message.dump();
-            client->setMessage(msg.c_str());
-
-            // LISTEN TO THE SERVER TO UPDATE TOTAL POINTS TO THE SCORE //
-
-            addBallCounter ++;
         }
-        // If the ballcollides with a dblock type
+
+        // If the ball collides with a dblock type
         if (dblock){
             double blockx = dblock->pos().x();
             double blocky = dblock->pos().y();
 
-            // If ball collides from bottom
-            if (bally > blocky + yPad && velY < 0){
-                velY = -1 * velY;
+            if (depthLvl <= 0){
+                // If ball collides from bottom
+                if (bally > blocky + yPad && velY < 0){
+                    velY = -1 * velY;
+                }
+
+                // If ball collides from top
+                if (blocky > bally + yPad && velY > 0 ){
+                    velY = -1 * velY;
+                }
+
+                // If ball collides from right
+                if (ballx > blockx + xPad && velX < 0){
+                    velX = -1 * velX;
+                }
+
+                // If ball collides from left
+                if (blockx > ballx + xPad && velX > 0){
+                    velX = -1 * velX;
+                }
+                // TELL SERVER ABOUT THE COLLISION //
+                json message;
+                string blkindx = to_string(i);
+                string ballindx = to_string(i);
+                message["type"] = "collision";
+                message["blkType"] = "double";
+                message["block"] = blkindx;
+                message["ball"] = ballindx;
+
+                string msg = message.dump();
+                client->setMessage(msg.c_str());
             }
-
-            // If ball collides from top
-            if (blocky > bally + yPad && velY > 0 ){
-                velY = -1 * velY;
+            else{
+                depthLvl --;
             }
-
-            // If ball collides from right
-            if (ballx > blockx + xPad && velX < 0){
-                velX = -1 * velX;
-            }
-
-            // If ball collides from left
-            if (blockx > ballx + xPad && velX > 0){
-                velX = -1 * velX;
-            }
-
-            // delete block(s)
-            game->scene->removeItem(dblock);
-            delete dblock;
-            // TELL SERVER ABOUT THE COLLISION //
-            // TELL SERVER TO ADD 15 POINTS TO SCORE //
-            json message;
-            string strblk = ptrToStr(dblock);
-            string strball = ptrToStr(ball);
-            message["type"] = "collision";
-            message["block"] = strblk;
-            message["ball"] = strball;
-
-            string msg = message.dump();
-            client->setMessage(msg.c_str());
-
-            // LISTEN TO THE SERVER TO UPDATE TOTAL POINTS TO THE SCORE //
-            addBallCounter ++;
         }
-        // If the ballcollides with a tblock type
+
+        // If the ball collides with a tblock type
         if (tblock){
             double blockx = tblock->pos().x();
             double blocky = tblock->pos().y();
 
-            // If ball collides from bottom
-            if (bally > blocky + yPad && velY < 0){
-                velY = -1 * velY;
+            if (depthLvl <= 0){
+                // If ball collides from bottom
+                if (bally > blocky + yPad && velY < 0){
+                    velY = -1 * velY;
+                }
+
+                // If ball collides from top
+                if (blocky > bally + yPad && velY > 0 ){
+                    velY = -1 * velY;
+                }
+
+                // If ball collides from right
+                if (ballx > blockx + xPad && velX < 0){
+                    velX = -1 * velX;
+                }
+
+                // If ball collides from left
+                if (blockx > ballx + xPad && velX > 0){
+                    velX = -1 * velX;
+                }
+                // TELL SERVER ABOUT THE COLLISION //
+                json message;
+                string blkindx = to_string(i);
+                string ballindx = to_string(i);
+                message["type"] = "collision";
+                message["blkType"] = "triple";
+                message["block"] = blkindx;
+                message["ball"] = ballindx;
+
+                string msg = message.dump();
+                client->setMessage(msg.c_str());
             }
-
-            // If ball collides from top
-            if (blocky > bally + yPad && velY > 0 ){
-                velY = -1 * velY;
+            else{
+                depthLvl --;
             }
-
-            // If ball collides from right
-            if (ballx > blockx + xPad && velX < 0){
-                velX = -1 * velX;
-            }
-
-            // If ball collides from left
-            if (blockx > ballx + xPad && velX > 0){
-                velX = -1 * velX;
-            }
-
-            // delete block(s)
-            game->scene->removeItem(tblock);
-            delete tblock;
-            // TELL SERVER ABOUT THE COLLISION //
-            // TELL SERVER TO ADD 20 POINTS TO SCORE //
-            json message;
-            string strblk = ptrToStr(tblock);
-            string strball = ptrToStr(ball);
-            message["type"] = "collision";
-            message["block"] = strblk;
-            message["ball"] = strball;
-
-            string msg = message.dump();
-            client->setMessage(msg.c_str());
-
-            // LISTEN TO THE SERVER TO UPDATE TOTAL POINTS TO THE SCORE //
-            addBallCounter ++;
         }
-        // If the ballcollides with an iblock type
-        if (iblock){
 
-            // CHECH FOR DEPH LEVEL WITH AN IF CONDITION //////////////////////////////////////////
+        // If the ball collides with an iblock type
+        if (iblock){
 
             double blockx = iblock->pos().x();
             double blocky = iblock->pos().y();
@@ -373,32 +349,24 @@ void Ball::checkBlckCollision(){
             if (blockx > ballx + xPad && velX > 0){
                 velX = -1 * velX;
             }
-
-            // delete block(s)
-            game->scene->removeItem(iblock);
-            delete iblock;
             // TELL SERVER ABOUT THE COLLISION //
-            // TELL SERVER TO ADD 30 POINTS TO SCORE //
             if (depthLvl >= 1){
                 json message;
-                string strblk = ptrToStr(iblock);
-                string strball = ptrToStr(ball);
+                string blkindx = to_string(i);
+                string ballindx = to_string(i);
                 message["type"] = "collision";
-                message["block"] = strblk;
-                message["ball"] = strball;
+                message["blkType"] = "intern";
+                message["block"] = blkindx;
+                message["ball"] = ballindx;
 
                 string msg = message.dump();
                 client->setMessage(msg.c_str());
                 depthLvl = 0;
-                // LISTEN TO THE SERVER TO UPDATE TOTAL POINTS TO THE SCORE //
-                // condition to ckeck if server says to destroy the block
-//                if (client->readMessage == "delete"){
-//                    delete iblock;
-//                }
+
             }
-            addBallCounter ++;
         }
-        // If the ballcollides with a deepblock type
+
+        // If the ball collides with a deepblock type
         if (deepblock){
             double blockx = deepblock->pos().x();
             double blocky = deepblock->pos().y();
@@ -428,32 +396,121 @@ void Ball::checkBlckCollision(){
             }
 
             // TELL SERVER ABOUT THE COLLISION //
-            // TELL SERVER TO ADD DEPTH LEVEL TO THE BALL //
             json message;
-            string strblk = ptrToStr(deepblock);
-            string strball = ptrToStr(ball);
+            string blkindx = to_string(i);
+            string ballindx = to_string(i);
             message["type"] = "collision";
-            message["block"] = strblk;
-            message["ball"] = strball;
+            message["blkType"] = "deep";
+            message["block"] = blkindx;
+            message["ball"] = ballindx;
 
             string msg = message.dump();
             client->setMessage(msg.c_str());
-
-            // LISTEN TO THE SERVER TO UPDATE DEPTH LEVEL //
-
-            addBallCounter ++;
         }
     }
 }
 /**
- * @brief Ball::addBall add a new ball to the playing area
+ * @brief Ball::addBall add a new ball to the playing area.
  */
 void Ball::addBall()
 {
-    if (addBallCounter >= 10){
-        game->addNewBall();
-        ballCounter ++;
-        addBallCounter = 0;
+    ballCounter++;
+}
+/**
+ * @brief Ball::deleteBlk deletes a block according to the server.
+ */
+void Ball::deleteBlk(string type, string index)
+{
+    size_t x = stoi(index);
+    QList<QGraphicsItem*> cItems = collidingItems();
+    QList<QGraphicsItem*> dItems = collidingItems();
+    QList<QGraphicsItem*> tItems = collidingItems();
+    QList<QGraphicsItem*> iItems = collidingItems();
+
+    // delete common block
+    if (type == "common"){
+        for (size_t i = 0, n = cItems.size(); i < n; ++i){
+            if (i == x){
+            CommonBlk *cblock = dynamic_cast<CommonBlk*>(cItems[i]);
+            game->scene->removeItem(cblock);
+            delete cblock;
+            }
+        }
     }
+    // delete double block
+    if (type == "double"){
+        for (size_t i = 0, n = dItems.size(); i < n; ++i){
+            if (i == x){
+            DoubleBlk *dblock = dynamic_cast<DoubleBlk*>(dItems[i]);
+            game->scene->removeItem(dblock);
+            delete dblock;
+            }
+        }
+    }
+    // delete triple block
+    if (type == "triple"){
+        for (size_t i = 0, n = tItems.size(); i < n; ++i){
+            if (i == x){
+            TripleBlk *tblock = dynamic_cast<TripleBlk*>(tItems[i]);
+            game->scene->removeItem(tblock);
+            delete tblock;
+            }
+        }
+    }
+    // delete intern block
+    if (type == "intern"){
+        for (size_t i = 0, n = iItems.size(); i < n; ++i){
+            if (i == x){
+            InternBlk *iblock = dynamic_cast<InternBlk*>(iItems[i]);
+            game->scene->removeItem(iblock);
+            delete iblock;
+            }
+        }
+    }
+}
+
+void Ball::deleteBall(string index)
+{
+    size_t x = stoi(index);
+    QList<QGraphicsItem*> bItems = collidingItems();
+    for (size_t i = 0, n = bItems.size(); i < n; ++i){
+        if (i == x){
+        Ball* ball = dynamic_cast<Ball*>(bItems[i]);
+        game->scene->removeItem(ball);
+        delete ball;
+        }
+    }
+}
+
+void Ball::addDepthLevel(QString lvl)
+{
+    depthLvl ++;
+    game->updatedepth(lvl);
+}
+/**
+ * @brief Ball::blkCreated notyfies the server every time a block is created.
+ */
+void Ball::blkCreated(string blkType)
+{
+    json message;
+    message["type"] = "blkCreated";
+    message["block"] = blkType;
+
+    string msg = message.dump();
+    client->setMessage(msg.c_str());
+}
+/**
+ * @brief Ball::notify notify server about nickname
+ * @param nick
+ */
+void Ball::notify(QString nick)
+{
+    string textNick = nick.toUtf8().constData(); // convert nick to string
+    json message;
+    message["type"] = "nickname";
+    message["nickname"] = textNick;
+
+    string msg = message.dump();
+    client->setMessage(msg.c_str());
 }
 

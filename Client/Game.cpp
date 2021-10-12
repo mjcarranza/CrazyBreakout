@@ -6,6 +6,9 @@
 #include "Tripleblk.h"
 #include "Internblk.h"
 #include "Deepblk.h"
+
+Ball* ball;
+Paddle* paddle;
 /**
  * @brief Game::Game Cosnstructor for the scene. Show all the game`s components
  * @param parent
@@ -43,13 +46,29 @@ Game::Game(QWidget *parent): QGraphicsView(parent){
     Player->setGeometry(5,10,90,25);
     scene->addWidget(Player);
 
+    // Add label for depth level
+    depth = new QLabel();
+    depth->setText("DEPTH:");
+    depth->setStyleSheet("Background-color: darkblue; color: lightgreen");
+    depth->setFont(QFont("Tlwg Typo BoldOblique",16));
+    depth->setGeometry(492,10,85,25);
+    scene->addWidget(depth);
+
+    // Add label for depth level in numbers
+    depthNum = new QLabel();
+    depthNum->setText("0");
+    depthNum->setStyleSheet("Background-color: darkblue; color: lightgreen");
+    depthNum->setFont(QFont("Tlwg Typo BoldOblique",16));
+    depthNum->setGeometry(577,10,28,25);
+    scene->addWidget(depthNum);
+
     // create a ball
-    Ball* ball = new Ball();
+    ball = new Ball();
     ball->setPos(200,500);
     scene->addItem(ball);
 
     // create a paddle
-    Paddle* paddle = new Paddle();
+    paddle = new Paddle();
     paddle->setPos(150,575);
     scene->addItem(paddle);
     paddle->grabMouse();
@@ -67,6 +86,8 @@ Game::Game(QWidget *parent): QGraphicsView(parent){
                     scene->addItem(cblks);
                     totalCommon--;
                     advX += 65;
+                    // notify the server
+                    ball->blkCreated("common");
                 }
             }else if(random == 2){
                 if(totaldouble != 0){
@@ -75,6 +96,8 @@ Game::Game(QWidget *parent): QGraphicsView(parent){
                     scene->addItem(dblks);
                     totaldouble--;
                     advX += 65;
+                    // notify the server
+                    ball->blkCreated("double");
                 }
             }else if(random == 3){
                 if(totalTriple != 0){
@@ -83,6 +106,8 @@ Game::Game(QWidget *parent): QGraphicsView(parent){
                     scene->addItem(tblks);
                     totalTriple--;
                     advX += 65;
+                    // notify the server
+                    ball->blkCreated("triple");
                 }
             }else if(random == 4){
                 if(totalIntern != 0){
@@ -91,6 +116,8 @@ Game::Game(QWidget *parent): QGraphicsView(parent){
                     scene->addItem(iblks);
                     totalIntern--;
                     advX += 65;
+                    // notify the server
+                    ball->blkCreated("intern");
                 }
             }else if(random == 5){
                 if(totalDeep > 0){
@@ -99,6 +126,8 @@ Game::Game(QWidget *parent): QGraphicsView(parent){
                     scene->addItem(deepblks);
                     totalDeep -= 1;
                     advX += 65;
+                    // notify the server
+                    ball->blkCreated("deep");
                 }
             }
         }
@@ -136,6 +165,7 @@ void Game::setNickName(QString n)
     scene->addWidget(nickName);
 
     // send the nickname to the server by ball.cpp
+    ball->notify(nick);
 }
 /**
  * @brief Game::setScore sets the score to the label for score as a number
@@ -143,19 +173,31 @@ void Game::setNickName(QString n)
  */
 void Game::setScore(QString scr)
 {
-    // scr is the obtained score
-    // Do it depending on what the server says from ball.cpp (call this method from ball.cpp
-    // with score as a parameter)
     scoreNum->setText(scr); // the qstring is what the server says
     scoreNum->setStyleSheet("Background-color: darkblue; color: lightgreen");
     scoreNum->setFont(QFont("Tlwg Typo BoldOblique",16));
-    scoreNum->setGeometry(700,10,80,25);
 }
-
+/**
+ * @brief Game::addNewBall adds a new ball to the playing area.
+ */
 void Game::addNewBall()
 {
     // create a ball
     Ball* ball = new Ball();
     ball->setPos(200,500);
     scene->addItem(ball);
+}
+/**
+ * @brief Game::reducePadd reduces the paddle width.
+ */
+void Game::reducePadd()
+{
+    paddle->reduceSize();
+}
+
+void Game::updatedepth(QString level)
+{
+    depthNum->setText(level); // the qstring is what the server says
+    depthNum->setStyleSheet("Background-color: darkblue; color: lightgreen");
+    depthNum->setFont(QFont("Tlwg Typo BoldOblique",16));
 }

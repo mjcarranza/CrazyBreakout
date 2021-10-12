@@ -16,7 +16,23 @@ Paddle::Paddle(QGraphicsItem *parent){
 double Paddle::getCenterX(){
     return x()+rect().width()/2;
 }
+/**
+ * @brief Paddle::reduceSize reduces the size of the paddle.
+ */
+void Paddle::reduceSize()
+{
+    int padWidth = rect().width();
+    rect().setWidth(padWidth-reduction);
+}
 
+int Paddle::getSize()
+{
+    return rect().width();
+}
+/**
+ * @brief Paddle::mouseMoveEvent sets the paddle position to the current mouse position.
+ * @param event
+ */
 void Paddle::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
     // follow mouse's x pos
     double mouseX = mapToScene(event->pos()).x();

@@ -11,12 +11,15 @@ class Paddle: public QGraphicsRectItem{
 public:
     // Attributes
     QBrush brush;
+    int reduction = 10;
 
     // constructors
     Paddle(QGraphicsItem* parent=NULL);
 
     // public methods
     double getCenterX();
+    void reduceSize();
+    int getSize();
 
     // events
     void mouseMoveEvent(QGraphicsSceneMouseEvent* event);
