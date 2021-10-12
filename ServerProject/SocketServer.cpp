@@ -1,6 +1,8 @@
 #include "SocketServer.h"
 
-SocketServer::SocketServer() {}
+SocketServer::SocketServer(Game* gamepointer) {
+    gameptr = gamepointer;
+}
 
 bool SocketServer::create_socket() {
     //Create a descriptor
@@ -78,4 +80,8 @@ void SocketServer::setMessage(const char *msn) {
     for(int i=0; i<clients.size();i++) {
         send(clients[i], msn, strlen(msn), 0);
     }
+}
+
+int SocketServer::getNoClients() {
+    return clients.size();
 }

@@ -18,9 +18,14 @@ void * serverRun(void *){
 }
 
 int main() {
-    server = new SocketServer;
+    server = new SocketServer(game);
     pthread_t serverThread;
     pthread_create(&serverThread, 0, serverRun, NULL);
     pthread_detach(serverThread);
+    while (true){
+        if (server->getNoClients()>=1)
+            game = new Game(server);
+            break;
+    }
     return 0;
 }

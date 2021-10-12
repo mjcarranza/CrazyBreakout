@@ -1,10 +1,13 @@
 #include "Game.h"
 #include "Player.h"
+#include "SocketServer.h"
 
-Game::Game(SocketServer* socketptrin) {
-    socketptr = socketptrin;
+Game::Game(SocketServer *pServer) {
+    socketptr = pServer;
     player = Player();
-}
+
+};
+Game::Game(){};
 
 bool Game::update_parameters() {
     json jmsg;

@@ -26,14 +26,15 @@ struct dataSocket{
 
 class SocketServer{
 public:
-    SocketServer();
+    SocketServer(Game* gamepointer);
     void run();
     void setMessage(const char* msn);
+    int getNoClients();
 private:
+    Game* gameptr;
     int descriptor; // identifies the system
     sockaddr_in info; //Server socket info
     vector<int> clients; //Stores the connected clients
-    Game* gameptr;
     bool create_socket();
     bool bind_kernel();
     static void* ClientController(void* obj); //void* obj accepts all types of object
