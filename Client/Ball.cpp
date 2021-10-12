@@ -154,6 +154,9 @@ void Ball::checkBallLeft(){
 
                 string msg = message.dump();
                 client->setMessage(msg.c_str());
+                gameOver = new gameover();
+                gameOver->show();
+                ballCounter --;
             }
         }
     }
@@ -198,23 +201,28 @@ void Ball::checkBlckCollision(){
             double blocky = sblock->pos().y();
             randomNum = game->randomNumber();
 
-            if ((bally > blocky + yPad && velY < 0)||(blocky > bally + yPad && velY > 0 )||
-                    (ballx > blockx + xPad && velX < 0)||(blockx > ballx + xPad && velX > 0)){
+            if (bally > blocky + yPad && velY < 0){
                 if (randomNum == 1){
                     // increase ball speed
                     velX = velX+0.2;
                     velY = velY+0.2;
                 }
-                else if (randomNum == 2){
+            }
+            if (blocky > bally + yPad && velY > 0 ){
+                if (randomNum == 2){
                     // reduce ball speed
                     velX = velX-0.2;
                     velY = velY-0.2;
                 }
-                else if (randomNum == 3){
+            }
+            if (ballx > blockx + xPad && velX < 0){
+                if (randomNum == 3){
                     // increase paddle size
                     game->increasePadd();
                 }
-                else if (randomNum == 4){
+            }
+            if (blockx > ballx + xPad && velX > 0){
+                if (randomNum == 4){
                     // reduce paddle size
                     game->reducePadd();
                 }
@@ -268,6 +276,11 @@ void Ball::checkBlckCollision(){
 
                 string msg = message.dump();
                 client->setMessage(msg.c_str());
+                scre = scre+10;
+                QString s = QString::number(scre);
+                game->setScore(s);
+                game->scene->removeItem(cblock);
+                delete cblock;
             }
             else{
                 depthLvl --;
@@ -315,6 +328,12 @@ void Ball::checkBlckCollision(){
 
                 string msg = message.dump();
                 client->setMessage(msg.c_str());
+                scre = scre+15;
+                QString s = QString::number(scre);
+                game->setScore(s);
+                game->scene->removeItem(dblock);
+                delete dblock;
+
             }
             else{
                 depthLvl --;
@@ -361,6 +380,11 @@ void Ball::checkBlckCollision(){
 
                 string msg = message.dump();
                 client->setMessage(msg.c_str());
+                scre = scre+20;
+                QString s = QString::number(scre);
+                game->setScore(s);
+                game->scene->removeItem(tblock);
+                delete tblock;
             }
             else{
                 depthLvl --;
@@ -404,7 +428,14 @@ void Ball::checkBlckCollision(){
 
                 string msg = message.dump();
                 client->setMessage(msg.c_str());
+                scre = scre+30;
+                QString s = QString::number(scre);
+                game->setScore(s);
+                game->scene->removeItem(iblock);
+                delete iblock;
                 depthLvl = 0;
+                QString dep = QString::number(depthLvl);
+                game->updatedepth(dep);
 
             }
         }
@@ -449,6 +480,9 @@ void Ball::checkBlckCollision(){
 
             string msg = message.dump();
             client->setMessage(msg.c_str());
+            depthLvl ++;
+            QString s = QString::number(depthLvl);
+            game->updatedepth(s);
         }
     }
 }

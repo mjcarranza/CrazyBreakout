@@ -37,6 +37,7 @@ private:
     int Counter = 0;
     int randomNum = 0;
     int ballCounter = 1;
+    int scre = 0;
 
     // private methods
     void reverseVelocity();
