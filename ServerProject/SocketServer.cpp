@@ -64,7 +64,11 @@ void * SocketServer::ClientController(void *obj) {
                 break;
             }
         }
-        cout << message << endl;
+        auto jmsg = json::parse(message);
+
+        if (jmsg["type"]=="blkCreated"){
+
+        }
     }
     close(data->descriptor);
     pthread_exit(NULL);

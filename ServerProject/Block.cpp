@@ -1,11 +1,9 @@
-//
-// Created by abner on 30/9/21.
-//
+
 
 #include "Block.h"
 
 #include <utility>
-Block::Block(string intype) {
+Block::Block(string intype, string newindex) {
     if (intype=="Comun")
         hits_left = 1;
     else if(intype=="Doble")
@@ -17,10 +15,7 @@ Block::Block(string intype) {
     else if(intype=="Interno")
         hits_left = 1;
     type = intype;
-}
-
-void Block::set_addr(string newaddr) {
-    addr = newaddr;
+    addr = newindex;
 }
 
 string Block::get_addr() {
@@ -32,5 +27,11 @@ int Block::hit() {
 }
 
 string Block::get_type() {
-
+    return type;
 }
+
+int Block::get_points2give() {
+    return point2give;
+}
+
+

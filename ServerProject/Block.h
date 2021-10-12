@@ -9,14 +9,17 @@ using namespace std;
 class Block {
 public:
     Block(string intype);
-    void set_addr(string newaddr);
+
+    Block(string intype, string newindex);
     string get_addr();
     int hit();
     string get_type();
+    int get_points2give();
 private:
     string type;
     int hits_left;
     string addr;
+    int point2give;
 };
 
 

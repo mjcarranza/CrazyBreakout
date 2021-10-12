@@ -8,11 +8,14 @@ Game::Game(SocketServer* socketptrin) {
 
 bool Game::update_parameters() {
     json jmsg;
-    jmsg["updatedScore"] = player.get_score();
+    jmsg["type"] = "addScore";
+    jmsg["score"]=player.get_score();
+    /**
     for (int i =0; player.get_balls().size(); i++){
         string key = player.get_balls()[i].get_addr();
         jmsg[key + "size"] = player.get_balls()[i].get_speed();
     }
+     */
     string msg = jmsg.dump();
     socketptr->setMessage(msg.c_str());
 }
@@ -35,6 +38,9 @@ void Game::notify_hit(string balladdr, string blkaddr) {
         jmsg["index"]=blkaddr;
         string msg = jmsg.dump();
         socketptr->setMessage(msg.c_str());
+        player.increase_score(blocks[stoi(blkaddr)].get_points2give());
+        blocks.erase(blocks.begin()+(stoi(blkaddr)-1));
+        update_parameters();
     }
 
 

@@ -22,7 +22,5 @@ int main() {
     pthread_t serverThread;
     pthread_create(&serverThread, 0, serverRun, NULL);
     pthread_detach(serverThread);
-
-
     return 0;
 }
