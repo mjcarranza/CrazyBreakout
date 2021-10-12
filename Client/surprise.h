@@ -2,6 +2,10 @@
 #define SURPRISE_H
 
 #include <QGraphicsRectItem>
+
+/**
+ * @brief The surprise class creates surprises
+ */
 class surprise: public QGraphicsRectItem
 {
 public:

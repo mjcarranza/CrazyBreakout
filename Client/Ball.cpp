@@ -516,7 +516,10 @@ void Ball::deleteBlk(string type, string index)
         }
     }
 }
-
+/**
+ * @brief Ball::deleteBall deletes a block from the scene
+ * @param index
+ */
 void Ball::deleteBall(string index)
 {
     size_t x = stoi(index);
@@ -529,7 +532,10 @@ void Ball::deleteBall(string index)
         }
     }
 }
-
+/**
+ * @brief Ball::addDepthLevel adds a depth level to a specific ball
+ * @param lvl
+ */
 void Ball::addDepthLevel(QString lvl)
 {
     depthLvl ++;

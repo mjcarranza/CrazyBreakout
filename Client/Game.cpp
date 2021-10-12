@@ -196,19 +196,26 @@ void Game::reducePadd()
 {
     paddle->reduceSize();
 }
-
+/**
+ * @brief Game::increasePadd increases paddle size
+ */
 void Game::increasePadd()
 {
     paddle->increaseSize();
 }
-
+/**
+ * @brief Game::updatedepth sets depth level on the sceen
+ * @param level
+ */
 void Game::updatedepth(QString level)
 {
     depthNum->setText(level); // the qstring is what the server says
     depthNum->setStyleSheet("Background-color: darkblue; color: lightgreen");
     depthNum->setFont(QFont("Tlwg Typo BoldOblique",16));
 }
-
+/**
+ * @brief Game::addSurprise creates surprises in the screen
+ */
 void Game::addSurprise()
 {
     surprise* Surprise = new surprise();
