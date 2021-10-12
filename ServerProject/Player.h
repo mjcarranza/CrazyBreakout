@@ -39,6 +39,13 @@ public:
      * @return
      */
     vector<Ball> get_balls();
+
+    /**
+     * @brief deletes an element from the ball vector
+     * @param index
+     * @return
+     */
+    bool del_ball(int index);
 };
 
 
