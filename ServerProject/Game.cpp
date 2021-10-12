@@ -43,5 +43,9 @@ void Game::notify_hit(string balladdr, string blkaddr) {
         update_parameters();
     }
 
+}
 
+void Game::create_block(string type, string index) {
+    Block newblock=Block(type, index);
+    blocks.push_back(newblock);
 }

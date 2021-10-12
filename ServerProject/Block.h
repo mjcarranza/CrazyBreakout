@@ -8,8 +8,6 @@
 using namespace std;
 class Block {
 public:
-    Block(string intype);
-
     Block(string intype, string newindex);
     string get_addr();
     int hit();

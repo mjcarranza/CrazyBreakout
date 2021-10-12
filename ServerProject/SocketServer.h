@@ -33,7 +33,6 @@ private:
     int descriptor; // identifies the system
     sockaddr_in info; //Server socket info
     vector<int> clients; //Stores the connected clients
-
     Game* gameptr;
     bool create_socket();
     bool bind_kernel();

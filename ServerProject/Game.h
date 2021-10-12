@@ -16,6 +16,7 @@ public:
     bool update_parameters();
     bool del_ball(string balladdr);
     void notify_hit(string balladdr, string blkaddr);
+    void create_block(string type, string index);
 private:
     SocketServer* socketptr;
     vector<Block> blocks;
