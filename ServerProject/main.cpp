@@ -1,7 +1,6 @@
+#include "Game.h"
 #include "SocketServer.h"
 #include "json.hpp"
-#include "Game.h"
-
 
 using json = nlohmann::json;
 SocketServer* server;
