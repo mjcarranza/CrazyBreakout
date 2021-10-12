@@ -16,3 +16,7 @@ int Player::increase_paddle_size(int incr) {
 int Player::increase_score(int incr) {
     return score+=incr;
 }
+
+vector<Ball> Player::get_balls() {
+    return balls;
+}

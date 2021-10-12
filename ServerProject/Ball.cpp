@@ -3,16 +3,26 @@
 //
 
 #include "Ball.h"
-
+#include <string>
+using namespace std;
 Ball::Ball() {};
 
+/**
+ *
+ * @param newAddr
+ */
 void Ball::set_addr(int newAddr) {
     addr = newAddr;
 }
 
-int Ball::get_addr() {
+/**
+ * @brief getter for the Balls address
+ * @return
+ */
+string Ball::get_addr() {
     return addr;
 }
+
 
 int Ball::get_depthlevel() {
     return depth_level;

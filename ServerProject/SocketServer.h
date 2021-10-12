@@ -15,6 +15,8 @@
 #include <pthread.h>
 #include <vector>
 #include <unistd.h>
+#include "Game.h"
+
 using namespace std;
 //Structure to represent the clients
 struct dataSocket{
@@ -32,6 +34,7 @@ private:
     sockaddr_in info; //Server socket info
     vector<int> clients; //Stores the connected clients
 
+    Game* gameptr;
     bool create_socket();
     bool bind_kernel();
     static void* ClientController(void* obj); //void* obj accepts all types of object
