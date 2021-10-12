@@ -48,8 +48,6 @@ private:
     vector<Block> blocks;
 
     vector<string> blocktypes = {"Comun", "Doble", "Triple", "Profundo", "Interno"};
-
-    bool update_parameters();
 };
 
 

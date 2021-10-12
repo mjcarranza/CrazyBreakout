@@ -4,7 +4,9 @@
 
 #ifndef SERVERPROJECT_BALL_H
 #define SERVERPROJECT_BALL_H
+#include <string>
 
+using namespace std;
 
 class Ball {
 public:
