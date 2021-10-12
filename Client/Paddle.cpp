@@ -24,16 +24,13 @@ void Paddle::reduceSize()
     int padWidth = rect().width();
     rect().setWidth(padWidth-reduction);
 }
-
+/**
+ * @brief Paddle::increaseSize add 5 pixels to total paddle size
+ */
 void Paddle::increaseSize()
 {
-    int padWidth = rect().width();
+    padWidth = rect().width();
     rect().setWidth(padWidth+reduction);
-}
-
-int Paddle::getSize()
-{
-    return rect().width();
 }
 /**
  * @brief Paddle::mouseMoveEvent sets the paddle position to the current mouse position.

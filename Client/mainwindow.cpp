@@ -49,7 +49,6 @@ void MainWindow::on_playBtn_clicked()
         game->show();
         game->setNickName(nick);
         close(); // close main window
-        // call boolean variable isPlaying
     }
 
 }

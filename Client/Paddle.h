@@ -12,6 +12,7 @@ public:
     // Attributes
     QBrush brush;
     int reduction = 10;
+    int padWidth = 60;
 
     // constructors
     Paddle(QGraphicsItem* parent=NULL);
@@ -20,7 +21,6 @@ public:
     double getCenterX();
     void reduceSize();
     void increaseSize();
-    int getSize();
 
     // events
     void mouseMoveEvent(QGraphicsSceneMouseEvent* event);
