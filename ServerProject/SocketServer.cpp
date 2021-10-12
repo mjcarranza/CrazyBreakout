@@ -69,7 +69,11 @@ void * SocketServer::ClientController(void *obj) {
         auto jmsg = json::parse(message);
 
         if (jmsg["type"]=="blkCreated"){
-
+            gameptr->create_block(jmsg["type"], jmsg["block"]);
+        } else if(jmsg["type"]=="collision"){
+            gameptr->notify_hit(jmsg["ball"], jmsg["block"]);
+        } else if(jmsg["type"]=="ballfell"){
+            gameptr->player.del_ball(jmsg["ball"]);
         }
     }
     close(data->descriptor);

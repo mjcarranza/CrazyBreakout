@@ -31,7 +31,7 @@ public:
     void setMessage(const char* msn);
     int getNoClients();
 private:
-    Game* gameptr;
+    static Game* gameptr;
     int descriptor; // identifies the system
     sockaddr_in info; //Server socket info
     vector<int> clients; //Stores the connected clients

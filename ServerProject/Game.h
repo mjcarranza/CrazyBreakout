@@ -42,10 +42,11 @@ public:
      * @param index
      */
     void create_block(string type, string index);
+    Player player;
 private:
     SocketServer *socketptr;
     vector<Block> blocks;
-    Player player;
+
     vector<string> blocktypes = {"Comun", "Doble", "Triple", "Profundo", "Interno"};
 
     bool update_parameters();
