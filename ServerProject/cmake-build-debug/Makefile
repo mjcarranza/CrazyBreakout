@@ -225,6 +225,30 @@ Player.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerProject.dir/build.make CMakeFiles/ServerProject.dir/Player.cpp.s
 .PHONY : Player.cpp.s
 
+SocketServer.o: SocketServer.cpp.o
+.PHONY : SocketServer.o
+
+# target to build an object file
+SocketServer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerProject.dir/build.make CMakeFiles/ServerProject.dir/SocketServer.cpp.o
+.PHONY : SocketServer.cpp.o
+
+SocketServer.i: SocketServer.cpp.i
+.PHONY : SocketServer.i
+
+# target to preprocess a source file
+SocketServer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerProject.dir/build.make CMakeFiles/ServerProject.dir/SocketServer.cpp.i
+.PHONY : SocketServer.cpp.i
+
+SocketServer.s: SocketServer.cpp.s
+.PHONY : SocketServer.s
+
+# target to generate assembly for a file
+SocketServer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServerProject.dir/build.make CMakeFiles/ServerProject.dir/SocketServer.cpp.s
+.PHONY : SocketServer.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -270,6 +294,9 @@ help:
 	@echo "... Player.o"
 	@echo "... Player.i"
 	@echo "... Player.s"
+	@echo "... SocketServer.o"
+	@echo "... SocketServer.i"
+	@echo "... SocketServer.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

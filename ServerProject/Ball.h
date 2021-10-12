@@ -10,14 +10,14 @@ class Ball {
 public:
     Ball();
     void set_addr(int newAddr);
-    int get_addr();
+    string get_addr();
     int get_depthlevel();
     int get_speed();
     int increase_speed(int incr);
 private:
     int speed{};
     int depth_level{};
-    int addr{};
+    string addr{};
 
 
 };

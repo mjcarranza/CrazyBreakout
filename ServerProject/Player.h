@@ -7,11 +7,12 @@ using namespace std;
 
 class Player {
 private:
-    Player();
+
     int score;
     int paddle_size;
     vector<Ball> balls;
 public:
+    Player();
     /**
      *
      * @param incr
@@ -33,6 +34,11 @@ public:
      */
     int get_score();
 
+    /**
+     * @brief getter for player,s ball vector
+     * @return
+     */
+    vector<Ball> get_balls();
 };
 
 
