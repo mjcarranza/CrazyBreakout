@@ -18,3 +18,24 @@ bool Game::update_parameters() {
 }
 
 
+bool Game::del_ball(string balladdr) {
+    json jmgs;
+    jmgs["type"]="deleteBall";
+    jmgs["index"] = balladdr;
+    string msg=jmgs.dump();
+    socketptr->setMessage(msg.c_str());
+    return player.del_ball(stoi(balladdr));
+}
+
+void Game::notify_hit(string balladdr, string blkaddr) {
+    if(blocks[stoi(blkaddr)].hit()<=0){
+        json jmsg;
+        jmsg["type"]="deleteBlk";
+        jmsg["block"]=blocks[stoi(blkaddr)].get_type();
+        jmsg["index"]=blkaddr;
+        string msg = jmsg.dump();
+        socketptr->setMessage(msg.c_str());
+    }
+
+
+}
