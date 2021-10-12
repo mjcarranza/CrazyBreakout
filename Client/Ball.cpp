@@ -184,7 +184,7 @@ void Ball::checkBlckCollision(){
         DoubleBlk *dblock = dynamic_cast<DoubleBlk*>(dItems[i]);
         TripleBlk *tblock = dynamic_cast<TripleBlk*>(tItems[i]);
         InternBlk *iblock = dynamic_cast<InternBlk*>(iItems[i]);
-        //surprise *sblock = dynamic_cast<surprise*>(surpItems[i]);
+        surprise *sblock = dynamic_cast<surprise*>(surpItems[i]);
         DeepBlk *deepblock = dynamic_cast<DeepBlk*>(deepItems[i]);
 
         double yPad = 9;
@@ -193,36 +193,36 @@ void Ball::checkBlckCollision(){
         double bally = pos().y();
 
         // if the ball collides with a surprise
-//        if (sblock){
-//            double blockx = sblock->pos().x();
-//            double blocky = sblock->pos().y();
-//            randomNum = game->randomNumber();
+        if (sblock){
+            double blockx = sblock->pos().x();
+            double blocky = sblock->pos().y();
+            randomNum = game->randomNumber();
 
-//            if ((bally > blocky + yPad && velY < 0)||(blocky > bally + yPad && velY > 0 )||
-//                    (ballx > blockx + xPad && velX < 0)||(blockx > ballx + xPad && velX > 0)){
-//                if (randomNum == 1){
-//                    // increase ball speed
-//                    velX = velX+0.2;
-//                    velY = velY+0.2;
-//                }
-//                else if (randomNum == 2){
-//                    // reduce ball speed
-//                    velX = velX-0.2;
-//                    velY = velY-0.2;
-//                }
-//                else if (randomNum == 3){
-//                    // increase paddle size
-//                    game->increasePadd();
-//                }
-//                else if (randomNum == 4){
-//                    // reduce paddle size
-//                    game->reducePadd();
-//                }
-//            }
+            if ((bally > blocky + yPad && velY < 0)||(blocky > bally + yPad && velY > 0 )||
+                    (ballx > blockx + xPad && velX < 0)||(blockx > ballx + xPad && velX > 0)){
+                if (randomNum == 1){
+                    // increase ball speed
+                    velX = velX+0.2;
+                    velY = velY+0.2;
+                }
+                else if (randomNum == 2){
+                    // reduce ball speed
+                    velX = velX-0.2;
+                    velY = velY-0.2;
+                }
+                else if (randomNum == 3){
+                    // increase paddle size
+                    game->increasePadd();
+                }
+                else if (randomNum == 4){
+                    // reduce paddle size
+                    game->reducePadd();
+                }
+            }
 
-//            game->scene->removeItem(sblock);
-//            delete sblock;
-//        }
+            game->scene->removeItem(sblock);
+            delete sblock;
+        }
 
         // If the ball collides with a cblock type
         if (cblock){
@@ -254,9 +254,9 @@ void Ball::checkBlckCollision(){
                     velY = velY + 0.2;
                 }
                 // random surprise
-//                if (game->randomNumber() == 5){
-//                    game->addSurprise();
-//                }
+                if (game->randomNumber() == 5){
+                    game->addSurprise();
+                }
                 // TELL SERVER ABOUT THE COLLISION //
                 json message;
                 string blkindx = to_string(i);
@@ -301,9 +301,9 @@ void Ball::checkBlckCollision(){
                     velX = -1 * velX;
                 }
                 // random surprise
-//                if (game->randomNumber() == 5){
-//                    game->addSurprise();
-//                }
+                if (game->randomNumber() == 5){
+                    game->addSurprise();
+                }
                 // TELL SERVER ABOUT THE COLLISION //
                 json message;
                 string blkindx = to_string(i);
@@ -347,9 +347,9 @@ void Ball::checkBlckCollision(){
                     velX = -1 * velX;
                 }
                 // random surprise
-//                if (game->randomNumber() == 5){
-//                    game->addSurprise();
-//                }
+                if (game->randomNumber() == 5){
+                    game->addSurprise();
+                }
                 // TELL SERVER ABOUT THE COLLISION //
                 json message;
                 string blkindx = to_string(i);
