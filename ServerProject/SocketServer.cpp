@@ -4,6 +4,7 @@ SocketServer::SocketServer(Game* gamepointer) {
     gameptr = gamepointer;
 }
 
+
 bool SocketServer::create_socket() {
     //Create a descriptor
     descriptor = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);//IPV4
