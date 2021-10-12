@@ -20,7 +20,8 @@ SOURCES += \
     Tripleblk.cpp \
     gameover.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    surprise.cpp
 
 HEADERS += \
     Ball.h \
@@ -33,7 +34,8 @@ HEADERS += \
     Paddle.h \
     Tripleblk.h \
     gameover.h \
-    mainwindow.h
+    mainwindow.h \
+    surprise.h
 
 FORMS += \
     gameover.ui \

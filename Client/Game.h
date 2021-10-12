@@ -45,7 +45,9 @@ public:
     void setScore(QString scr);
     void addNewBall();
     void reducePadd();
+    void increasePadd();
     void updatedepth(QString level);
+    void addSurprise();
 };
 
 #endif // GAME_H

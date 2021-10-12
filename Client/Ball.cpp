@@ -11,6 +11,7 @@
 #include "Client.h"
 #include "json.hpp"
 #include "gameover.h"
+#include "surprise.h"
 
 using json = nlohmann::json;
 Client* client;
@@ -177,22 +178,56 @@ void Ball::checkBlckCollision(){
     QList<QGraphicsItem*> dItems = collidingItems();
     QList<QGraphicsItem*> tItems = collidingItems();
     QList<QGraphicsItem*> iItems = collidingItems();
+    QList<QGraphicsItem*> surpItems = collidingItems();
     QList<QGraphicsItem*> deepItems = collidingItems();
 
     // Check for collisions
     for (size_t i = 0, n = cItems.size(); i < n; ++i){
 
-        Ball* ball = dynamic_cast<Ball*>(bItems[i]);
+        //Ball* ball = dynamic_cast<Ball*>(bItems[i]);
         CommonBlk *cblock = dynamic_cast<CommonBlk*>(cItems[i]);
         DoubleBlk *dblock = dynamic_cast<DoubleBlk*>(dItems[i]);
         TripleBlk *tblock = dynamic_cast<TripleBlk*>(tItems[i]);
         InternBlk *iblock = dynamic_cast<InternBlk*>(iItems[i]);
+        surprise *sblock = dynamic_cast<surprise*>(surpItems[i]);
         DeepBlk *deepblock = dynamic_cast<DeepBlk*>(deepItems[i]);
 
         double yPad = 9;
         double xPad = 59;
         double ballx = pos().x();
         double bally = pos().y();
+
+        // if the ball collides with a surprise
+        if (sblock){
+            double blockx = sblock->pos().x();
+            double blocky = sblock->pos().y();
+            randomNum = game->randomNumber();
+
+            if ((bally > blocky + yPad && velY < 0)||(blocky > bally + yPad && velY > 0 )||
+                    (ballx > blockx + xPad && velX < 0)||(blockx > ballx + xPad && velX > 0)){
+                if (randomNum == 1){
+                    // increase ball speed
+                    velX = velX+0.2;
+                    velY = velY+0.2;
+                }
+                else if (randomNum == 2){
+                    // reduce ball speed
+                    velX = velX-0.2;
+                    velY = velY-0.2;
+                }
+                else if (randomNum == 3){
+                    // increase paddle size
+                    game->increasePadd();
+                }
+                else if (randomNum == 4){
+                    // reduce paddle size
+                    game->reducePadd();
+                }
+            }
+
+            game->scene->removeItem(sblock);
+            delete sblock;
+        }
 
         // If the ball collides with a cblock type
         if (cblock){
@@ -223,6 +258,10 @@ void Ball::checkBlckCollision(){
                     velX = -1 * (velX + 0.2);
                     velY = velY + 0.2;
                 }
+                // random surprise
+                if (game->randomNumber() == 5){
+                    game->addSurprise();
+                }
                 // TELL SERVER ABOUT THE COLLISION //
                 json message;
                 string blkindx = to_string(i);
@@ -238,6 +277,7 @@ void Ball::checkBlckCollision(){
             else{
                 depthLvl --;
             }
+
         }
 
         // If the ball collides with a dblock type
@@ -264,6 +304,10 @@ void Ball::checkBlckCollision(){
                 // If ball collides from left
                 if (blockx > ballx + xPad && velX > 0){
                     velX = -1 * velX;
+                }
+                // random surprise
+                if (game->randomNumber() == 5){
+                    game->addSurprise();
                 }
                 // TELL SERVER ABOUT THE COLLISION //
                 json message;
@@ -306,6 +350,10 @@ void Ball::checkBlckCollision(){
                 // If ball collides from left
                 if (blockx > ballx + xPad && velX > 0){
                     velX = -1 * velX;
+                }
+                // random surprise
+                if (game->randomNumber() == 5){
+                    game->addSurprise();
                 }
                 // TELL SERVER ABOUT THE COLLISION //
                 json message;

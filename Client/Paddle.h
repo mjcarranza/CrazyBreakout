@@ -19,6 +19,7 @@ public:
     // public methods
     double getCenterX();
     void reduceSize();
+    void increaseSize();
     int getSize();
 
     // events

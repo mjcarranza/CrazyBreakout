@@ -25,6 +25,12 @@ void Paddle::reduceSize()
     rect().setWidth(padWidth-reduction);
 }
 
+void Paddle::increaseSize()
+{
+    int padWidth = rect().width();
+    rect().setWidth(padWidth+reduction);
+}
+
 int Paddle::getSize()
 {
     return rect().width();

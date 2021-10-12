@@ -34,7 +34,8 @@ private:
     double velX;
     double velY;
     int depthLvl = 0;
-    int addBallCounter = 0;
+    int Counter = 0;
+    int randomNum = 0;
     int ballCounter = 1;
 
     // private methods

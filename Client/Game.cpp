@@ -6,9 +6,11 @@
 #include "Tripleblk.h"
 #include "Internblk.h"
 #include "Deepblk.h"
+#include "surprise.h"
 
 Ball* ball;
 Paddle* paddle;
+
 /**
  * @brief Game::Game Cosnstructor for the scene. Show all the game`s components
  * @param parent
@@ -195,9 +197,21 @@ void Game::reducePadd()
     paddle->reduceSize();
 }
 
+void Game::increasePadd()
+{
+    paddle->increaseSize();
+}
+
 void Game::updatedepth(QString level)
 {
     depthNum->setText(level); // the qstring is what the server says
     depthNum->setStyleSheet("Background-color: darkblue; color: lightgreen");
     depthNum->setFont(QFont("Tlwg Typo BoldOblique",16));
+}
+
+void Game::addSurprise()
+{
+    surprise* Surprise = new surprise();
+    Surprise->setPos(397,450);
+    scene->addItem(Surprise);
 }

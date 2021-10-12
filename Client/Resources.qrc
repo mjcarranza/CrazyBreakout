@@ -9,5 +9,6 @@
         <file>images/paddle.png</file>
         <file>images/triple.png</file>
         <file>images/gameover.jpg</file>
+        <file>images/surprise.png</file>
     </qresource>
 </RCC>

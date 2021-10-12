@@ -13,7 +13,6 @@ public:
 
     // constructors
     DeepBlk(QGraphicsItem* parent=NULL);
-    void setPosition(int x, int y);
 
 };
 
